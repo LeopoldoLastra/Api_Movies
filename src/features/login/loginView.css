@@ -1,0 +1,28 @@
+.login_container{
+    position: relative;
+    margin: 55% 10%;
+}
+
+.login_form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form_data{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.form_label{ 
+    text-align: right;
+    margin-right: 8px;
+}
+
+.login_buttons{
+ 
+    text-align: center;
+    margin-top: 16px;
+}
+
+

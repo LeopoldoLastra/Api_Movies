@@ -18,5 +18,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --red: #db0000;
+  --black: #000000;
+  --white: #ffffff;
+  --grey: #564d4d;
+  --dark-red: #831010;
+
+  --sm: 14px;
+  --md:16px;
+  --lg:18px;
+}
+
+button{
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
 }
 
