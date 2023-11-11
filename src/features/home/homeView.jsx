@@ -10,7 +10,7 @@ const HomeView = ()=>{
   <>
    <>
       <header className='header'>
-        <nav className='header_left'><HiMenu/></nav>
+        <nav className='header_left'><Link to='/'><HiMenu/></Link></nav>
         <div>Logo</div>
         <div className='header_right'><Link to='/login'><HiOutlineUser/></Link></div>
         
