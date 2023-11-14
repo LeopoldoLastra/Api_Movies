@@ -2,9 +2,9 @@ import React from 'react';
 import { Card } from '../card/card';
 import { useTmdb } from '../../services/useTmdb';
 
-const Carrousel = ({tipe, movieId})=>{
+const Carrousel = ({tipe, movieId, time})=>{
 
-    const {information, error} = useTmdb({tipe, movieId});
+    const {information, error} = useTmdb({tipe, movieId, time});
 
     
    return(

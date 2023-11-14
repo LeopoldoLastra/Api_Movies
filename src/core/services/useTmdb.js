@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-const useTmdb= ({tipe, movieId})=>{
+const useTmdb= ({tipe, movieId, time})=>{
+
+
 
     const [information, setInformation] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -40,7 +42,10 @@ let path
        
             path=`https://api.themoviedb.org/3/movie/${movieId}/similar`
             
-        }else {
+        }else if(tipe==='trending'){
+            path=`https://api.themoviedb.org/3/trending/movie/${time}`
+        }
+        else {
             
             path=`https://api.themoviedb.org/3/movie/${movieId}`
         }
@@ -59,6 +64,7 @@ let path
                     const data = await response.json();
                     const addaptedData = adapter(data)
                     setInformation(addaptedData)
+                   
     
                 }catch(error){
                     setError(error);
@@ -68,7 +74,7 @@ let path
               }
       
              popularMovies();
-          },[])
+          },[path])
 
          
 

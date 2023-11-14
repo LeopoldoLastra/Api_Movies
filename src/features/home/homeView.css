@@ -40,8 +40,19 @@ html{
     border-radius: 5px;
   }
   
+
   .carrousel_container{
     width: 100vw;
+  }
+
+  .carrousel_container_head{
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .carrousel_container_head_buttons{
+    margin-left: 16px;
   }
  
   .cards_container{

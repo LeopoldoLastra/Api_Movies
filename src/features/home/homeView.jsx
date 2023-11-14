@@ -2,13 +2,30 @@ import './homeView.css'
 import React from 'react';
 import { HiOutlineUser, HiSearch, HiMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { Card } from '../../core/components/card/card';
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 //import { ApiTmdb} from '../../core/services/tmdb';
 
 
 const HomeView = ()=>{
+
+  const [timeWindow, setTimeWindow] = useState('day')
+
+
+  
+  
+
+  function selectedTime(e){
+   
+
+    if (e.target.value==='day'){
+      setTimeWindow('day')
+    }else{
+      setTimeWindow('week')
+    }
+   
+  }
 
   return(
   <>
@@ -31,9 +48,18 @@ const HomeView = ()=>{
         </section>
 
         <section className='carrousel_container'>
-          <h2>Popular</h2> 
+          <div className='carrousel_container_head'>
+            <h2>Trending</h2>
+            <div className='carrousel_container_head_buttons' >
+              <button value={'day'} onClick={(e)=>selectedTime(e)}>Day</button> 
+              <button value={'week'}onClick={(e)=>selectedTime(e)}>Week</button>
+            </div>
+            
+          </div>
+          
+            
             <div className='cards_container'>
-                <Carrousel tipe={'popular'}/>
+                <Carrousel tipe={'trending'} time={timeWindow}/>
                 <div className='cards'></div>
                 
             </div>
