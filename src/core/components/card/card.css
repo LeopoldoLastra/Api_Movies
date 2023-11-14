@@ -1,0 +1,21 @@
+.cards{
+    display: inline-block;
+    margin-right: 8px;
+    box-sizing: border-box;
+    width: 250px;
+    height: inherit;
+  }
+  
+  .cards img{
+    border-radius: 5px;
+    object-fit: contain;
+    width: 250px;
+  }
+
+  .cards_title{
+    box-sizing: border-box;
+   
+   color: var(--black);
+   white-space: pre-line;
+   
+  }

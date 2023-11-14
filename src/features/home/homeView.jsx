@@ -1,11 +1,15 @@
+import './homeView.css'
 import React from 'react';
 import { HiOutlineUser, HiSearch, HiMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
-import './homeView.css'
-
+import { useState, useEffect } from 'react';
+import { Card } from '../../core/components/card/card';
+import { Carrousel } from '../../core/components/carrousel/carrousel';
+//import { ApiTmdb} from '../../core/services/tmdb';
 
 
 const HomeView = ()=>{
+
   return(
   <>
    <>
@@ -26,104 +30,32 @@ const HomeView = ()=>{
           </form>
         </section>
 
-        <section className='trend_container'>
-          <h2>Tendencias</h2>
-          
-          <div className='cards_container'>
-            <Link to='/movie'>
-                <div className='cards'>
-                    <img />
-                    <h3>Pelicula</h3>
-                </div>
-            </Link>
-            <Link to='/movie'>
-                <div className='cards'>
-                    <img />
-                    <h3>Pelicula</h3>
-                </div>
-            </Link>
-            <Link to='/movie'>
-                <div className='cards'>
-                    <img />
-                    <h3>Pelicula</h3>
-                </div>
-            </Link>
-            <Link to='/movie'>
-                <div className='cards'>
-                    <img />
-                    <h3>Pelicula</h3>
-                </div>
-            </Link>
-           
-          </div>
-          
-
-
-        </section>
-
-        <section className='trend_container'>
-          <h2>Últimos Estrenos</h2>
-          
-          <div className='cards_container'>
-            <Link to='/movie'>
-                    <div className='cards'>
-                        <img />
-                        <h3>Pelicula</h3>
-                    </div>
-                </Link>
-                <Link to='/movie'>
-                    <div className='cards'>
-                        <img />
-                        <h3>Pelicula</h3>
-                    </div>
-                </Link>
-                <Link to='/movie'>
-                    <div className='cards'>
-                        <img />
-                        <h3>Pelicula</h3>
-                    </div>
-                </Link>
-                <Link to='/movie'>
-                    <div className='cards'>
-                        <img />
-                        <h3>Pelicula</h3>
-                    </div>
-                </Link>
-          </div>
-        </section>
-
-        <section className='trend_container'>
-          <h2>Tendencias</h2>
-            <div>
-                <div className='cards_container'>
-                    <Link to='/movie'>
-                            <div className='cards'>
-                                <img />
-                                <h3>Pelicula</h3>
-                            </div>
-                        </Link>
-                        <Link to='/movie'>
-                            <div className='cards'>
-                                <img />
-                                <h3>Pelicula</h3>
-                            </div>
-                        </Link>
-                        <Link to='/movie'>
-                            <div className='cards'>
-                                <img />
-                                <h3>Pelicula</h3>
-                            </div>
-                        </Link>
-                        <Link to='/movie'>
-                            <div className='cards'>
-                                <img />
-                                <h3>Pelicula</h3>
-                            </div>
-                        </Link>
-                </div>
-            
+        <section className='carrousel_container'>
+          <h2>Popular</h2> 
+            <div className='cards_container'>
+                <Carrousel tipe={'popular'}/>
+                <div className='cards'></div>
+                
             </div>
         </section>
+
+        <section className='carrousel_container'>
+          <h2>Upcoming</h2> 
+            <div className='cards_container'>
+                <Carrousel tipe={'upcoming'}/>
+                <div className='cards'></div>
+            </div>
+        </section>
+
+        <section className='carrousel_container'>
+          <h2>En cartelera</h2> 
+            <div className='cards_container'>
+                <Carrousel tipe={'now_playing'}/>
+                <div className='cards'></div>
+            </div>
+        </section>
+
+        
 
       </main>
 

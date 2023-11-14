@@ -1,11 +1,18 @@
-import React from 'react';
+
 import { HiOutlineUser, HiSearch, HiMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
+import { Carrousel } from '../../core/components/carrousel/carrousel';
+import { useTmdb } from '../../core/services/useTmdb';
+
 import './movieView.css'
 
-
-
 const MovieView = ()=>{
+
+  const movieId = (location.hash.split('/'))[2]
+
+  const {information, error}=useTmdb({movieId})
+
+  console.log(information)
   return(
   <>
    <>
@@ -19,37 +26,24 @@ const MovieView = ()=>{
       <main className='body'>
         
         <section className='description_container'>
-            <img/>
-            <h1>Título Película</h1>
-            <p>Descripción</p>
-            <p>Categoría</p>
-            <p>Reparto</p>
+            <img src={`https://image.tmdb.org/t/p/original${information.poster_path}`}/>
+            <div className='detail_container'>
+              <h1>{information?.title}</h1>
+              <p>{information?.overview}</p>
+              <p>Reparto</p>
+            </div>
+            
+
         </section>
 
-        <section className='trend_container'>
-          <h2>Películas Relacionadas</h2>
-          
-          <div className='cards_container'>
-            <div className='cards'>
-              <img />
-              <h3>Pelicula</h3>
+        <section className='carrousel_container'>
+          <h2>Películas Relacionadas</h2> 
+            <div className='cards_container'>
+                <Carrousel tipe={'similar'} movieId={movieId}/>
+                <div className='cards'></div>
+                
             </div>
-            <div className='cards'>
-              <img />
-              <h3>Pelicula</h3>
-            </div>
-            <div className='cards'>
-              <img />
-              <h3>Pelicula</h3>
-            </div>
-            <div className='cards'>
-              <img />
-              <h3>Pelicula</h3>
-            </div>
-           
-          </div>
-        </section>
-        
+        </section>       
       </main>
 
       <footer className='footer'>

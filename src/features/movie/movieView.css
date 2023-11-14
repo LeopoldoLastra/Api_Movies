@@ -29,6 +29,8 @@ html{
     display: flex;
     flex-direction: column;
   }
+
+
   
   .searcher{
     display: flex;
@@ -51,14 +53,6 @@ html{
   .cards_container::-webkit-scrollbar { 
     width: 0!important }
   
-  .cards{
-    display: inline-block;
-    margin-right: 8px;
-    border:solid var(--black);
-    border-radius: 5px;
-    width: 250px;
-    height: 300px; 
-  }
   
   .footer{
     display: flex;
