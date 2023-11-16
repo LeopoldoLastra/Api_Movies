@@ -1,9 +1,10 @@
 import './header.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { HiOutlineUser, HiMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { MenuModal } from '../portal/menuModal';
+import { MoviesContext } from '../../../context/MoviesContext';
 
 const Header=()=>{
 
@@ -15,8 +16,8 @@ const Header=()=>{
         }else{
             setOpenModal(true)
         }
-    };
-
+    }
+    const {setState, state} = useContext(MoviesContext)
 
     return(
 
@@ -33,6 +34,7 @@ const Header=()=>{
                     <li>Mi Lista</li>
                     <li>Terror</li>
                     <li>Comedia</li>
+                    <li>{state}</li>
 
                 </ul>
             </MenuModal>
