@@ -3,6 +3,12 @@
   padding: 0;
   margin: 0;
 }
+#menu{
+  background-color:var(--soft-black);
+position:absolute;
+
+height: 75vh;
+top:68px}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -21,6 +27,7 @@
 
   --red: #db0000;
   --black: #000000;
+  --soft-black:#242424;
   --white: #ffffff;
   --grey: #564d4d;
   --dark-red: #831010;

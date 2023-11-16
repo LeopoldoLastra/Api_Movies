@@ -23,6 +23,23 @@ html{
     flex-direction: column;
     margin-top: 8px;
     background-color: var(--white);  
+  
+   
+  }
+
+  
+
+  .body_action_bar{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-items: center;
+    background-color: var(--grey);
+  }
+
+  .icon{
+    color: var(--white);
+    font-size: 150%;
+    margin: 16px;
   }
 
   .description_container{

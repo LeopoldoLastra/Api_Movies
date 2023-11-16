@@ -1,41 +1,27 @@
 import './homeView.css'
 import React from 'react';
-import { HiOutlineUser, HiSearch, HiMenu } from "react-icons/hi";
-import { Link } from 'react-router-dom';
+import { Header } from '../../core/components/header/header';
 import { useState} from 'react';
-import { Card } from '../../core/components/card/card';
+import { HiSearch } from "react-icons/hi";
 import { Carrousel } from '../../core/components/carrousel/carrousel';
-//import { ApiTmdb} from '../../core/services/tmdb';
+
 
 
 const HomeView = ()=>{
 
   const [timeWindow, setTimeWindow] = useState('day')
 
-
-  
-  
-
   function selectedTime(e){
-   
 
-    if (e.target.value==='day'){
-      setTimeWindow('day')
-    }else{
-      setTimeWindow('week')
+    if (e.target.value==='day'){setTimeWindow('day')
+    }else{setTimeWindow('week')
     }
-   
   }
 
   return(
   <>
    <>
-      <header className='header'>
-        <nav className='header_left'><Link to='/'><HiMenu/></Link></nav>
-        <div>Logo</div>
-        <div className='header_right'><Link to='/login'><HiOutlineUser/></Link></div>
-        
-      </header>
+      <Header/>
       
       <main className='body'>
         
