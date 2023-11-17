@@ -5,10 +5,8 @@ import { Carrousel } from '../../core/components/carrousel/carrousel';
 import { useTmdb } from '../../core/services/useTmdb';
 import { IoBookmarkOutline, IoShareSocialOutline } from 'react-icons/io5';
 import { BiLike } from 'react-icons/bi';
-import { Header } from '../../core/components/header/header';
-
-
 import './movieView.css'
+import Header from "../../core/components/header/header";
 
 
 const MovieView = ()=>{
