@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 
 const useTmdb= ({tipe, movieId, time})=>{
@@ -26,57 +25,43 @@ const useTmdb= ({tipe, movieId, time})=>{
             }
         };
 
-  
-    
-let path
-   
+    let path
     function selected_path(){
         if(tipe==='popular'){
             path='https://api.themoviedb.org/3/movie/popular'
-        } else if(tipe === 'upcoming'){
+        }else if(tipe === 'upcoming'){
             path='https://api.themoviedb.org/3/movie/upcoming'
-        } 
-        else if(tipe === 'now_playing'){
+        }else if(tipe === 'now_playing'){
             path='https://api.themoviedb.org/3/movie/now_playing'
-        } else if(tipe==='similar'){
-       
+        }else if(tipe==='similar'){
             path=`https://api.themoviedb.org/3/movie/${movieId}/similar`
-            
         }else if(tipe==='trending'){
             path=`https://api.themoviedb.org/3/trending/movie/${time}`
-        }
-        else {
-            
+        }else {
             path=`https://api.themoviedb.org/3/movie/${movieId}`
         }
+        return path
     } 
-
     selected_path()
 
 
     useEffect(()=>{
-            
         const popularMovies = async()=>{
-                 setIsLoading(false);
-                 setError(null);
+                setIsLoading(false);
+                setError(null);
                 try{
                     const response = await fetch(path, options);
                     const data = await response.json();
                     const addaptedData = adapter(data)
                     setInformation(addaptedData)
-                   
-    
                 }catch(error){
                     setError(error);
-                    }finally{
+                }finally{
                     setIsLoading(true);
                 }       
-              }
-      
-             popularMovies();
-          },[path])
-
-         
+            }
+        popularMovies();
+    },[path])
 
     return{
         information,

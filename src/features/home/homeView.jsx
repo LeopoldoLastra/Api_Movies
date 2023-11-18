@@ -3,6 +3,7 @@ import { useState} from 'react';
 import { HiSearch } from "react-icons/hi";
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import Header from '../../core/components/header/header';
+import Banner from '../../core/components/banner/Banner';
 
 
 
@@ -23,6 +24,7 @@ const HomeView = ()=>{
       <Header/>
       
       <main className='body'>
+        <Banner />
         
         {/* <section className='introduccion_container'>
           <h2>¿Qué miramos hoy?</h2>
