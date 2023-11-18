@@ -1,9 +1,8 @@
 import './homeView.css'
-import React from 'react';
-import { Header } from '../../core/components/header/header';
 import { useState} from 'react';
 import { HiSearch } from "react-icons/hi";
 import { Carrousel } from '../../core/components/carrousel/carrousel';
+import Header from '../../core/components/header/header';
 
 
 
@@ -25,13 +24,13 @@ const HomeView = ()=>{
       
       <main className='body'>
         
-        <section className='introduccion_container'>
+        {/* <section className='introduccion_container'>
           <h2>¿Qué miramos hoy?</h2>
           <form name='search' className='searcher'>
             <label><HiSearch/></label>
             <input type='text' placeholder='buscar' className='searcher_box'/>
           </form>
-        </section>
+        </section> */}
 
         <section className='carrousel_container'>
           <div className='carrousel_container_head'>

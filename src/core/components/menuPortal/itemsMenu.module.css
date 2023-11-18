@@ -1,0 +1,40 @@
+.vertical {
+    font-size: 1.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    align-items: flex-end;
+    letter-spacing: 0.02em;
+    list-style: none;
+}
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-around;
+    list-style: none
+}
+.link{
+    position: relative;
+    top: 0;
+    min-width: 100px;
+    max-width: 200px;
+    padding: 0.25rem;
+    text-align: right;
+    cursor: pointer;
+    transition: all .3s;
+}
+.link a{
+    color:#fff;
+    text-decoration: none;
+}
+
+.link:active, .link:hover {
+    top: 1px;
+    left: 1px;
+    background-color: #891010;
+    box-shadow: none;
+    transform: scale(1.1);
+}
+

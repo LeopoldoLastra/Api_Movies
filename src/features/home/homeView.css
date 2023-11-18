@@ -1,64 +1,71 @@
-html{
-    position: relative;
+:root{
+  box-sizing: border-box;
+  
+}
+::-webkit-scrollbar{
+  display: none;
+}
+.body{
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  background-color: var(--white);  
+  scroll-snap-type: y mandatory;
 }
 
-  
-  .body{
-    color: var(--black);
-    display: flex;
-    flex-direction: column;
-    margin-top: 8px;
-    background-color: var(--white);  
-  }
-  
-  .searcher{
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin: 16px 0px;
-  }
-  .searcher_box{
-    padding: 5px;
-    width: 75%;
-    height: 40px;
-    background-color: var(--white);
-    border: solid 2px var(--red);
-    border-radius: 5px;
-  }
-  
+.searcher{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 16px 0px;
+}
+.searcher_box{
+  padding: 5px;
+  width: 75%;
+  height: 40px;
+  background-color: var(--white);
+  border: solid 2px var(--red);
+  border-radius: 5px;
+}
 
-  .carrousel_container{
-    width: 100vw;
-  }
 
-  .carrousel_container_head{
-    display: flex;
-    flex-direction: row;
-    
-  }
+.carrousel_container{
+  width: 100%;
+  padding: 10px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
 
-  .carrousel_container_head_buttons{
-    margin-left: 16px;
-  }
- 
-  .cards_container{
-    white-space: nowrap;
-    padding: 4px;
-    overflow-x: scroll;
-    overflow-y: hidden; 
-  }
+.carrousel_container_head{
+  display: flex;
+  flex-direction: row;
   
-  .cards_container::-webkit-scrollbar { 
-    width: 0!important }
-  
+}
 
-  
-  .footer{
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 160px;
-    color: white;
-  }
+.carrousel_container_head_buttons{
+  margin-left: 16px;
+}
+
+.cards_container{
+  white-space: nowrap;
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden; 
+}
+
+.cards_container::-webkit-scrollbar { 
+  width: 0!important }
+
+
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 160px;
+  color: white;
+}
