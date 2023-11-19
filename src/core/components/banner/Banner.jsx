@@ -1,71 +1,72 @@
-import { useTmdb } from "../../services/useTmdb"
-import { BiLike } from 'react-icons/bi';
-import { AiFillHeart, AiOutlineHeart  } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineHeart, AiOutlinePlayCircle, AiOutlinePlaySquare, AiFillPlayCircle  } from 'react-icons/ai';
 import { useState } from "react";
+import { useGetData } from "./getData";
+import {useBannerStyles} from "./bannerStyles"
+import { Navigation, Pagination, Scrollbar} from 'swiper/modules'
+import 'swiper/css/bundle'
+
 
 const Banner = () => {
-
-    const tipe = 'now_playing'
-    const movieId = null
-    const time = null
-    const {information, error} = useTmdb({tipe, movieId, time});
-    const [clicked, setClicked] = useState(false)
+    
+    const {info} = useGetData()    
+    const [likeds, setLikeds] = useState([])
+    const handleLikeds = (title) =>{
+        const isLiked = likeds.find(item => item == title)
+        if(!isLiked){
+            setLikeds([
+                ...likeds, title
+            ])
+        }else{
+            const newLikeds = likeds.filter(item=> item != title)
+            setLikeds(newLikeds)
+        }
+    }
+    const {stylesSlide, stylesTitle, stylesSwiper, stylesInfoContainer, stylesImg} = useBannerStyles()
+    
   return (
     <swiper-container
-        slides-per-view="1" 
-        speed="500" 
-        loop="true" 
+        modules={[Navigation, Pagination, Scrollbar]}
+        slides-per-view="1"
+        controller='true'
+        navigation='true'
+        speed='500'
         css-mode="true"
-        navigation="true" 
-        pagination="true" 
-        scrollbar="true"
-        style={{overflow:'hidden', marginTop:'5px'}}
-        >
+        style={stylesSwiper}>
                 {
-                    information.slice(0,10).map(movie => (
+                    info.slice(0,20).map(movie => (
                         
-                            <swiper-slide 
+                            <swiper-slide
                                 key={movie.id}
-                                style={{width: '100%', height:'400px', backgroundColor: '#121212', display:'flex', justifyContent: 'flex-end'}}
-                                >   
+                                lazy='true'
+                                style={stylesSlide}>   
                                     <div
-                                        style={{
-                                            color: '#ddd',
-                                            width:'300px',
-                                            textAlign: 'center',
-                                            display:'flex',
-                                            flexDirection: 'column',
-                                            justifyContent:'space-around',
-                                            padding:'0 20px'
-                                        }}>
-                                            <h2
-                                                style={{fontSize:'40px', height:'70%'}}>{movie.original_title}</h2>
+                                        style={stylesInfoContainer}>
+                                            <h2 style={stylesTitle}>{movie.original_title}</h2>
                                             <div
                                                 style={{
                                                     display: 'flex',
-                                                    justifyContent:'space-between'
+                                                    justifyContent:'space-around',
+                                                    alignItems: 'center'
                                                 }}>
-                                                <span
-                                                    style={{
-                                                        borderRadius:'50%',
-                                                        border:'1px solid #ddd',
-                                                        width:50,
-                                                        height:50,
-                                                        display:'flex',
-                                                        alignItems:'center',
-                                                        justifyContent:'center'
-                                                    }}
-                                                    onClick={()=>setClicked(!clicked)}>
-                                                        {
-                                                            clicked && <AiFillHeart size={30}/> || <AiOutlineHeart size={30}/>
-                                                        }
-                                                    </span>
-                                                <span></span>
+                                                {
+                                                    window.innerWidth > 768 && (
+                                                    <>
+                                                        <span
+                                                            onClick={()=>handleLikeds(movie.original_title)}>
+                                                            {
+                                                                likeds.includes(movie.original_title)
+                                                                ? <AiFillHeart size={40}/>
+                                                                : <AiOutlineHeart size={40}/>
+                                                            }
+                                                        </span>
+                                                        <span><AiFillPlayCircle size={40}/></span>
+                                                    </>)
+                                                }
+                                                
                                             </div>
                                     </div>
-                                    <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.original_title} style={{objectFit:'cover', width:'80%', height:'100%'}}/>
+                                    <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.original_title} style={stylesImg}/>
                             </swiper-slide>
-                     
                     ))
                 }
     </swiper-container>
