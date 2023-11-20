@@ -18,6 +18,8 @@ const App = ()=>{
                     <Route path='/' element={<HomeView/>}/>
                     <Route path='/login' element={<LoginView/>}/>
                     <Route path='/movie/:slug' element={<MovieView/>}/>
+                    <Route path='/movies' element={<MoviesView/>}/>
+
                 </Routes>
             </HashRouter>
         </MoviesProvider>
