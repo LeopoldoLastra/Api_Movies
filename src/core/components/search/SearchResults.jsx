@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { MoviesContext } from '../../../context/MoviesContext'
-
+import { Card } from '../card/card'
+import style from '../carrousel/carrusel.module.css'
 const SearchResults = () => {
     const [movies, setMovies] = useState([])
 
@@ -14,7 +15,7 @@ const SearchResults = () => {
     }
     
     let movieSearched =''
-    if(searched.includes(' ')){
+    if(searched?.includes(' ')){
         movieSearched = searched.replace(' ', '%20')
     }else{
         movieSearched = searched
@@ -29,21 +30,25 @@ const SearchResults = () => {
     
     useEffect(()=>{
         results()
-        console.log(movies)
     },[searched])
 
   return (
-    <div>
-        {
-            movies.length > 0 &&
-            movies.map((movie)=>(
-                <div
-                    key={movie.id}>
-                    <h2>{movie.original_title}</h2>
-                </div>
-            ))
-        }
-    </div>
+    <section className='carrousel_container'>
+        <div className={style.cardsContainer}>
+            {
+                movies.length > 0 &&
+                movies.map((movie)=>(
+                    <Card
+                        className='cards'
+                        key={movie.id}
+                        title={movie.title}
+                        img={movie.poster_path}
+                        >
+                    </Card>
+                ))
+            }
+        </div>
+    </section>
   )
 }
 

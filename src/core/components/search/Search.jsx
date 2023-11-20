@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { MoviesContext } from "../../../context/MoviesContext"
 import './search.css'
 
@@ -11,14 +11,17 @@ const Search = () => {
   return (
     <form 
         name='search' 
-        className='searcher'>
+        className='searcher'
+        onSubmit={handleSearch}>
             <label 
                 className='searcher_icon'>{/* <HiSearch/> */}Buscar</label>
             <input 
                 type='text' 
                 placeholder='The Batman... ' 
                 className='searcher_box'
-                onChange={(e)=>handleSearch(e)}/>
+                name='movie'
+                />
+            <input type="submit" value="buscar" />
     </form>
   )
 }

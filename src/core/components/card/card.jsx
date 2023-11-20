@@ -2,7 +2,7 @@ import './card.css'
 import React from 'react';
 import { NavLink} from 'react-router-dom';
 
-const Card = ({ title, img, id})=>{
+const Card = ({title, img, id})=>{
 
     return(
         <>

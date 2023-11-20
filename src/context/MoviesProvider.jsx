@@ -27,8 +27,9 @@ export default function MoviesProvider({children}) {
     }
 
     const handleSearch = (e) =>{
-        e.preventDefault()
-        let movieSearched = e.target.value
+        e.preventDefault();
+        const data = new FormData(e.target)
+        const movieSearched = data.get('movie')
         setSearched(movieSearched)
     }
     
