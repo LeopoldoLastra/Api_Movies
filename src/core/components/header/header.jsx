@@ -1,49 +1,51 @@
-import './header.css';
-import React, { useContext } from 'react';
+import style from './header.module.css';
+import React, { useContext, useEffect } from 'react';
 import { HiOutlineUser, HiMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { MenuModal } from '../portal/menuModal';
 import { MoviesContext } from '../../../context/MoviesContext';
+import Menu from '../menuPortal/menu';
+import ItemsMenu from '../menuPortal/ItemsMenu';
+import Navbar from '../navbar/Navbar';
 
-const Header=()=>{
 
-    const [openModal, setOpenModal]= useState(false)
+const Header = () => {
 
-    function showMenu(){
-        if(openModal){
-            setOpenModal(false)
-        }else{
-            setOpenModal(true)
-        }
+    const [active, setActive] = useState(false)
+    const [width, setWidth] = useState(window.innerWidth)
+    const showMenu = () => {
+        setActive(true)
     }
-    const {setState, state} = useContext(MoviesContext)
+    const detectWidth = () =>{
+        setWidth(window.innerWidth)
+    }
+    useEffect(()=>{
+        window.addEventListener("resize", detectWidth)
+        return() =>{
+            window.removeEventListener("resize", detectWidth)
+        }
+    },[width])
 
     return(
 
-        <>
-        <header className='header'>
-            <nav className='header_left'><Link to='/'><HiMenu onClick={()=>{showMenu()}}/></Link></nav>
-            <div>Logo</div>
-            <div className='header_right'><Link to='/login'><HiOutlineUser/></Link></div>
-            
-        </header>
-        {openModal && 
-            <MenuModal>
-                <ul>
-                    <li>Mi Lista</li>
-                    <li>Terror</li>
-                    <li>Comedia</li>
-                    <li>{state}</li>
-
-                </ul>
-            </MenuModal>
-        }
-
-        </>
-        
+        <header className={style.header}>
+            <div className={style.logo}>Logo</div>
+            <Navbar 
+                showMenu={showMenu}
+                width={width}/>
+            <Menu
+                active={active}
+                setActive={setActive}
+                >
+                <ItemsMenu orientation='vertical'/>
+                <div className={style.userVertical}><Link to='/login'><HiOutlineUser/></Link></div>
+            </Menu>
+            <div className={style.userHorizontal}>
+                <Link to='/login'><HiOutlineUser/></Link>
+            </div>
+        </header>    
     )
 }
 
 
-export{ Header}
+export default Header

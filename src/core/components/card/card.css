@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .cards{
     display: inline-block;
     margin-right: 8px;
@@ -20,3 +21,61 @@
    white-space: pre-line;
    
   }
+=======
+a{
+  text-decoration: none;
+}
+.cards{  
+  box-sizing: border-box;
+  width: 250px;
+  scroll-snap-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.cards img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.card-info{
+  width: 100%;
+  background-color: rgba(0,0,0,.5);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 40%;
+  line-clamp: 3;
+  white-space: pre-wrap;
+  padding: 5px;
+  position: absolute;
+  top: -100%;
+  transition: all .3s;
+  border-radius: 10px;
+}
+
+
+.cards_title{
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--black);
+  position: relative;
+  line-clamp: 1;
+}
+@media screen and (min-width: 770px){
+  .cards_title{
+    display: none;
+  }
+  .cards:hover .card-info{
+    top:0;
+  }
+  
+}
+>>>>>>> 18bc4703213db9039370c9c4568a5d3f384734af
