@@ -57,7 +57,7 @@ let path
     useEffect(()=>{
             
         const popularMovies = async()=>{
-                 setIsLoading(false);
+                 setIsLoading(true);
                  setError(null);
                 try{
                     const response = await fetch(path, options);
@@ -68,8 +68,9 @@ let path
     
                 }catch(error){
                     setError(error);
-                    }finally{
-                    setIsLoading(true);
+
+                }finally{
+                    setIsLoading(false);
                 }       
               }
       

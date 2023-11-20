@@ -4,6 +4,7 @@
     box-sizing: border-box;
     width: 250px;
     height: inherit;
+
   }
   
   .cards img{
@@ -14,7 +15,7 @@
 
   .cards_title{
     box-sizing: border-box;
-   
+  
    color: var(--black);
    white-space: pre-line;
    
