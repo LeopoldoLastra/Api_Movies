@@ -1,0 +1,35 @@
+.searcher{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .searcher_box{
+    padding: 5px;
+    width: 300px;
+    height: 40px;
+    background: url('./lupa.svg') no-repeat;
+    background-position: 90% 50%;
+    background-size: 30px;
+    cursor: default;
+    outline: none;
+    color: #000;
+    border:0;
+    border-bottom: 1px solid #aaa;
+    transition: all .5s;
+  }
+  .searcher_box:focus{
+    width: 375px;
+    background-position: 100% 50%;
+    background-size: 20px;
+    border:0;
+    border-bottom: 2px solid var(--dark-red);
+  }
+
+@media screen and (max-width:500px){
+    .searcher_box{
+        width: 200px;
+    }
+    .searcher_box:focus{
+        width: 320px;
+    }
+}

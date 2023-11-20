@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useGetData = () =>{
+    const [loaded, setLoaded] = useState(false)
     const [info, setInfo] = useState([])
     const options = {
         method: 'GET',
@@ -19,6 +20,7 @@ export const useGetData = () =>{
     const url = 'https://api.themoviedb.org/3/movie/now_playing'
 
     const getMovieData = async () =>{
+        setLoaded(false)
         try {
             const response = await fetch(url, options)
             const data = await response.json()
@@ -26,11 +28,13 @@ export const useGetData = () =>{
             setInfo(adappted)
         } catch (error) {
             console.log(error.message)
+        }finally{
+            setLoaded(true)
         }
     }
     useEffect(()=>{
         getMovieData()
     },[])
 
-    return {info}
+    return {info, loaded}
 }

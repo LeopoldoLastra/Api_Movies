@@ -14,22 +14,6 @@
   scroll-snap-type: y mandatory;
 }
 
-.searcher{
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin: 16px 0px;
-}
-.searcher_box{
-  padding: 5px;
-  width: 75%;
-  height: 40px;
-  background-color: var(--white);
-  border: solid 2px var(--red);
-  border-radius: 5px;
-}
-
-
 .carrousel_container{
   width: 100%;
   padding: 10px;

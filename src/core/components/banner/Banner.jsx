@@ -8,7 +8,7 @@ import 'swiper/css/bundle'
 
 const Banner = () => {
     
-    const {info} = useGetData()    
+    const {info, loaded} = useGetData()    
     const [likeds, setLikeds] = useState([])
     const handleLikeds = (title) =>{
         const isLiked = likeds.find(item => item == title)
@@ -33,6 +33,7 @@ const Banner = () => {
         css-mode="true"
         style={stylesSwiper}>
                 {
+                    loaded && 
                     info.slice(0,20).map(movie => (
                         
                             <swiper-slide

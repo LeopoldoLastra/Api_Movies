@@ -7,7 +7,6 @@ export const useBannerStyles = () =>{
     }
     useEffect(()=>{
         window.addEventListener("resize", detectWidth)
-        console.log(width)
         return() =>{
             window.removeEventListener("resize", detectWidth)
         }

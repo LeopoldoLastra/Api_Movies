@@ -45,27 +45,28 @@ const useTmdb= ({tipe, movieId, time})=>{
     selected_path()
 
 
+    const popularMovies = async() =>{
+        setIsLoading(true);
+        setError(null);
+        try{
+            const response = await fetch(path, options);
+            const data = await response.json();
+            const addaptedData = adapter(data)
+            setInformation(addaptedData)
+        }catch(error){
+            setError(error);
+        }finally{
+            setIsLoading(false);
+        }       
+    }
     useEffect(()=>{
-        const popularMovies = async()=>{
-                setIsLoading(false);
-                setError(null);
-                try{
-                    const response = await fetch(path, options);
-                    const data = await response.json();
-                    const addaptedData = adapter(data)
-                    setInformation(addaptedData)
-                }catch(error){
-                    setError(error);
-                }finally{
-                    setIsLoading(true);
-                }       
-            }
         popularMovies();
     },[path])
 
     return{
         information,
-        error
+        error,
+        isLoading
     }
 };
 

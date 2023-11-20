@@ -6,8 +6,11 @@ const Carrousel = ({tipe, movieId, time})=>{
 
     const {information, error} = useTmdb({tipe, movieId, time});
 
+    let sectionTitle = tipe.toUpperCase().replace('_', ' ');
     
    return(
+    <>
+        <h2>{sectionTitle}</h2>
         <div className={style.cardsContainer}>
         {information.map(e=>
                 <Card
@@ -18,6 +21,7 @@ const Carrousel = ({tipe, movieId, time})=>{
            
         )}
         </div>
+    </>
     
     )
 }
