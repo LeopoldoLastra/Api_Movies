@@ -7,7 +7,6 @@ const GenreList = ({kindOfSearch})=>{
 
     const {information, error}= useTmdb ({type:'by_genre', kindOfSearch:kindOfSearch})
 
-
     return(
         <>
         <div className='genre_list_container'>

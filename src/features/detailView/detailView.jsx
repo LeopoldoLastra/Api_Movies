@@ -20,49 +20,25 @@ const DetailView = ()=>{
 
   const [movieId, setMovieId]= useState((locationHash[2]))
   
-  
-
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
-  console.log("la informacion es", information)
-
+ 
   const selectedMovie = { 
     id:information.id,
     title:information.title,
-    img:information.poster_path,
+    img:information.poster,
     description:information.overview
   }
   const isFavMovie = isFav(movieId)
   
-
-
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
-
-    // const persistentMovieList =[]
- 
-    // if(!localStorage.getItem('Codo_Movie')){
-    //   persistentMovieList.push(selectedMovie)
-    //   localStorage.setItem(`Codo_Movie`,JSON.stringify(persistentMovieList))
-    // }else{
-    //   const oldMovieList = JSON.parse(localStorage.getItem('Codo_Movie'))
-    //   oldMovieList.forEach((movie)=>{persistentMovieList.push(movie)})
-    //   persistentMovieList.push(selectedMovie)
-    //   const nueva = new Map([])
-    //   persistentMovieList.forEach((e)=>{
-    //     nueva.set(e.id, {id:e.id, title:e.title, img:e.img, overview:e.overview})
-    //   })
-    //   localStorage.setItem(`Codo_Movie`,JSON.stringify(persistentMovieList))
-
-    // }
- 
   }
 
   return(
   <>
-   
       <Header/>
       <main className='body' >
-        <img src={`https://image.tmdb.org/t/p/original${information.poster_path}`} width={300} height={300}/>
+        <img src={`https://image.tmdb.org/t/p/original${information.poster}`} width={300} height={300}/>
         <section className='body_action_bar' style={{position: 'relative'}}>
           <BiLike className='icon'/>
           <span 
@@ -92,11 +68,8 @@ const DetailView = ()=>{
       </main>
 
       <Footer/>
-      
-    
   </>
     
 )};
-
 
 export {DetailView};

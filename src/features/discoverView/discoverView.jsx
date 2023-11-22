@@ -61,6 +61,7 @@ const DiscoverView = ()=>{
                     searchedMovie={searchedMovie}
                     selectedCategoryId={selectedCategoryId}
                     kindOfSearch={kindOfSearch}/>
+            
             </div>
                      
         </section>

@@ -14,7 +14,7 @@ const Carrousel = ({type, movieId, time, kindOfSearch})=>{
                     key={e.id}
                     id={e.id}
                     title={e.title}
-                    img={e.poster_path}/> 
+                    img={e.poster}/> 
            
         )}
         </div>

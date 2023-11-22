@@ -11,12 +11,28 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
     const adapter = (data)=>{
         if(!data.results){
-            return(data)
+            return(
+                {   id: data.id,
+                    title: data.title || data.name,
+                    poster: data.poster_path,
+                    genres: data.genres,
+                    overview: data.overview,
+                    vote: data.vote_average
+                }                  
+                )
         }else{
-            return(data.results)
+            return(
+               
+                data.results.map(e=>({
+                    id: e.id,
+                    title: e.title || e.name,
+                    poster: e.poster_path,
+                    genres: e.genre_ids,
+                    overview: e.overview,
+                    vote: e.vote_average
+                })))
         }
     }
-
 
     const options = {
             method: 'GET',
@@ -25,39 +41,38 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
               Authorization: `'Bearer ${import.meta.env.VITE_APP_API_TOKEN_AUTH_TMDB}`
             }
         };
-
-  
+const URL = 'https://api.themoviedb.org/3'
     
 let path
    
     function selected_path(){
         if(type==='popular'){
-            path='https://api.themoviedb.org/3/movie/popular'
+            path=`${URL}/movie/popular`
 
         } else if(type === 'upcoming'){
-            path='https://api.themoviedb.org/3/movie/upcoming'
+            path=`${URL}/movie/upcoming`
         } 
         else if(type === 'now_playing'){
-            path='https://api.themoviedb.org/3/movie/now_playing'
+            path=`${URL}/movie/now_playing`
 
         } else if(type==='similar'){
-            path=`https://api.themoviedb.org/3/${kindOfSearch}/${movieId}/similar`
+            path=`${URL}/${kindOfSearch}/${movieId}/similar`
             
         }else if(type==='trending'){
-            path=`https://api.themoviedb.org/3/trending/movie/${time}`
+            path=`${URL}/trending/movie/${time}`
 
         }else if(type==='by_genre'){
-            path=`https://api.themoviedb.org/3/genre/${kindOfSearch}/list`
+            path=`${URL}/genre/${kindOfSearch}/list`
        
 
         }else if(type==='discover'){
-            path=`https://api.themoviedb.org/3/discover/${kindOfSearch}`
+            path=`${URL}/discover/${kindOfSearch}`
 
         }else if(type==='discover_by_genre'){
-            path=`https://api.themoviedb.org/3/discover/${kindOfSearch}?with_genres=${genreId}`
+            path=`${URL}/discover/${kindOfSearch}?with_genres=${genreId}`
         }
         else {
-            path=`https://api.themoviedb.org/3/${kindOfSearch}/${movieId}`
+            path=`${URL}/${kindOfSearch}/${movieId}`
         }
     } 
 
