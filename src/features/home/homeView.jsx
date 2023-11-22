@@ -67,12 +67,12 @@ const HomeView = ()=>{
             </div>
         </section>
 
-        
+        <Footer/>
+    
 
       </main>
 
-      <Footer/>
-    
+      
   </>
     
 )};
