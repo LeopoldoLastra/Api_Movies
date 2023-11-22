@@ -1,0 +1,17 @@
+
+.genre_list_container{
+    margin: 10px 0px;
+}
+
+.genre_list{
+    margin:10px 0px;
+    scroll-snap-align: center;
+    background-color: var(--grey);
+    text-align: left;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(7, 40vw);
+    grid-template-rows: repeat(3, 50px);
+    overflow-x: scroll;
+   
+}

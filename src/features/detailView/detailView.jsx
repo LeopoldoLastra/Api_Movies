@@ -5,19 +5,25 @@ import { Carrousel } from '../../core/components/carrousel/carrousel';
 import { useTmdb } from '../../core/services/useTmdb';
 import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-icons/io5';
 import { BiLike } from 'react-icons/bi';
-import './movieView.css'
+import './DetailView.css'
 import Header from "../../core/components/header/header";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MoviesContext } from "../../context/MoviesContext";
+import { Footer } from "../../core/components/footer/footer";
 
 
-const MovieView = ()=>{
+const DetailView = ()=>{
 
   const {handleFavs, isFav} = useContext(MoviesContext)
 
-  const movieId = (location.hash.split('/'))[2]
+  const locationHash = ((location.hash.split('/')))
 
-  const {information, error}=useTmdb({movieId})
+  const [movieId, setMovieId]= useState((locationHash[2]))
+  
+  
+
+  const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
+  console.log("la informacion es", information)
 
   const selectedMovie = { 
     id:information.id,
@@ -53,7 +59,7 @@ const MovieView = ()=>{
 
   return(
   <>
-   <>
+   
       <Header/>
       <main className='body' >
         <img src={`https://image.tmdb.org/t/p/original${information.poster_path}`} width={300} height={300}/>
@@ -76,24 +82,21 @@ const MovieView = ()=>{
             </div>
         </section>
         <section className='carrousel_container'>
-          <h2>Películas Relacionadas</h2> 
+          <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
             <div className='cards_container'>
-                <Carrousel tipe={'similar'} movieId={movieId}/>
+                <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
                 <div className='cards'></div>
                 
             </div>
         </section>       
       </main>
-      <footer className='footer'>
-        <ul>
-          <li>Quienes Somos</li>
-          <li>Contactanos</li>
-        </ul>
-      </footer>
-    </>
+
+      <Footer/>
+      
+    
   </>
     
 )};
 
 
-export {MovieView};
+export {DetailView};

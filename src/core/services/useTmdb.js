@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-const useTmdb= ({tipe, movieId, time})=>{
+const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
 
 
@@ -31,23 +31,33 @@ const useTmdb= ({tipe, movieId, time})=>{
 let path
    
     function selected_path(){
-        if(tipe==='popular'){
+        if(type==='popular'){
             path='https://api.themoviedb.org/3/movie/popular'
-        } else if(tipe === 'upcoming'){
+
+        } else if(type === 'upcoming'){
             path='https://api.themoviedb.org/3/movie/upcoming'
         } 
-        else if(tipe === 'now_playing'){
+        else if(type === 'now_playing'){
             path='https://api.themoviedb.org/3/movie/now_playing'
-        } else if(tipe==='similar'){
-       
-            path=`https://api.themoviedb.org/3/movie/${movieId}/similar`
+
+        } else if(type==='similar'){
+            path=`https://api.themoviedb.org/3/${kindOfSearch}/${movieId}/similar`
             
-        }else if(tipe==='trending'){
+        }else if(type==='trending'){
             path=`https://api.themoviedb.org/3/trending/movie/${time}`
+
+        }else if(type==='by_genre'){
+            path=`https://api.themoviedb.org/3/genre/${kindOfSearch}/list`
+       
+
+        }else if(type==='discover'){
+            path=`https://api.themoviedb.org/3/discover/${kindOfSearch}`
+
+        }else if(type==='discover_by_genre'){
+            path=`https://api.themoviedb.org/3/discover/${kindOfSearch}?with_genres=${genreId}`
         }
         else {
-            
-            path=`https://api.themoviedb.org/3/movie/${movieId}`
+            path=`https://api.themoviedb.org/3/${kindOfSearch}/${movieId}`
         }
     } 
 
@@ -64,8 +74,6 @@ let path
                     const data = await response.json();
                     const addaptedData = adapter(data)
                     setInformation(addaptedData)
-                   
-    
                 }catch(error){
                     setError(error);
 

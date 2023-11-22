@@ -3,6 +3,7 @@ import { useState} from 'react';
 import { HiSearch } from "react-icons/hi";
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import Header from '../../core/components/header/header';
+import { Footer } from '../../core/components/footer/footer';
 
 
 
@@ -19,7 +20,7 @@ const HomeView = ()=>{
 
   return(
   <>
-   <>
+  
       <Header/>
       
       <main className='body'>
@@ -44,7 +45,7 @@ const HomeView = ()=>{
           
             
             <div className='cards_container'>
-                <Carrousel tipe={'trending'} time={timeWindow}/>
+                <Carrousel type={'trending'} time={timeWindow}/>
                 <div className='cards'></div>
                 
             </div>
@@ -53,7 +54,7 @@ const HomeView = ()=>{
         <section className='carrousel_container'>
           <h2>Upcoming</h2> 
             <div className='cards_container'>
-                <Carrousel tipe={'upcoming'}/>
+                <Carrousel type={'upcoming'}/>
                 <div className='cards'></div>
             </div>
         </section>
@@ -61,7 +62,7 @@ const HomeView = ()=>{
         <section className='carrousel_container'>
           <h2>En cartelera</h2> 
             <div className='cards_container'>
-                <Carrousel tipe={'now_playing'}/>
+                <Carrousel type={'now_playing'}/>
                 <div className='cards'></div>
             </div>
         </section>
@@ -70,14 +71,8 @@ const HomeView = ()=>{
 
       </main>
 
-      <footer className='footer'>
-        <ul>
-          <li>Quienes Somos</li>
-          <li>Contactanos</li>
-        </ul>
-
-      </footer>
-    </>
+      <Footer/>
+    
   </>
     
 )};

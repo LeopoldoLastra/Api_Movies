@@ -30,29 +30,6 @@
 }
 
 
-<<<<<<< HEAD
-  .carrousel_container_head{
-    display: flex;
-    flex-direction: row;
-    
-    
-  }
-
-  .carrousel_container_head_buttons{
-    margin-left: 16px;
-  }
- 
-  .cards_container{
-    white-space: nowrap;
-    padding: 4px;
-    overflow-x: scroll;
-    overflow-y: hidden; 
-    scroll-snap-type: mandatory;
-  }
-  
-  .cards_container::-webkit-scrollbar { 
-    width: 0!important }
-=======
 .carrousel_container{
   width: 100%;
   padding: 10px;
@@ -63,7 +40,6 @@
 .carrousel_container_head{
   display: flex;
   flex-direction: row;
->>>>>>> 18bc4703213db9039370c9c4568a5d3f384734af
   
 }
 
