@@ -41,6 +41,7 @@ const SearchResults = () => {
                     <Card
                         className='cards'
                         key={movie.id}
+                        id={movie.id}
                         title={movie.title}
                         img={movie.poster_path}
                         >

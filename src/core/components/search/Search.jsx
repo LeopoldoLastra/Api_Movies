@@ -8,6 +8,9 @@ const Search = () => {
 
     const {handleSearch} = useContext(MoviesContext)
 
+    const handleChange = (e) =>{
+      handleSearch(e.target.value)
+    }
   return (
     <form 
         name='search' 
@@ -20,6 +23,7 @@ const Search = () => {
                 placeholder='The Batman... ' 
                 className='searcher_box'
                 name='movie'
+                onChange={handleChange}
                 />
             <input type="submit" value="buscar" />
     </form>

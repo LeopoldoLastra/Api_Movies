@@ -27,8 +27,11 @@ const HomeView = ()=>{
       <Header/>
       <main className='body'>
         <Search />
-        <Banner />
-        <SearchResults />
+        {
+          searched.length>0
+          ? <SearchResults />
+          : <Banner />
+        }
         <section className='carrousel_container'>
           <div className='carrousel_container_head'>
             <div className='carrousel_container_head_buttons' >
