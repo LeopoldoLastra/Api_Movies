@@ -1,19 +1,18 @@
 import './homeView.css'
 import { useContext, useState} from 'react';
-import { HiSearch } from "react-icons/hi";
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import Header from '../../core/components/header/header';
 import Banner from '../../core/components/banner/Banner';
-import Search from '../../core/components/search/Search';
+
 import { MoviesContext } from '../../context/MoviesContext';
-import SearchResults from '../../core/components/search/SearchResults';
+
 
 
 
 const HomeView = ()=>{
 
   const [timeWindow, setTimeWindow] = useState('day')
-  const {searched} = useContext(MoviesContext)
+  
 
   function selectedTime(e){
     if (e.target.value==='day'){
@@ -26,12 +25,7 @@ const HomeView = ()=>{
   <>
       <Header/>
       <main className='body'>
-        <Search />
-        {
-          searched.length>0
-          ? <SearchResults />
-          : <Banner />
-        }
+        <Banner />
         <section className='carrousel_container'>
           <div className='carrousel_container_head'>
             <div className='carrousel_container_head_buttons' >
@@ -51,10 +45,6 @@ const HomeView = ()=>{
         </section>
       </main>
       <footer className='footer'>
-        <ul>
-          <li>Quienes Somos</li>
-          <li>Contactanos</li>
-        </ul>
       </footer>
   </>
     

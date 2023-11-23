@@ -4,7 +4,6 @@ import { MoviesContext } from './MoviesContext'
 
 export default function MoviesProvider({children}) {
     const [favs, setFavs] = useState([])
-    const [searched, setSearched] = useState('')
 
     const saveStorage = (movie) => localStorage.setItem('movieFavs', JSON.stringify(movie))
     const loadStorage = () => localStorage.getItem('movieFavs')
@@ -25,14 +24,6 @@ export default function MoviesProvider({children}) {
             setFavs(newFavs)
         }
     }
-
-    const handleSearch = (e) =>{
-        // e.preventDefault();
-        // const data = new FormData(e.target)
-        // const movieSearched = data.get('movie')
-        // setSearched(movieSearched)
-        setSearched(e)
-    }
     
     useEffect(()=>{
         const data = loadStorage();
@@ -49,10 +40,7 @@ export default function MoviesProvider({children}) {
             value={{
                 favs,
                 handleFavs,
-                isFav,
-                searched,
-                setSearched,
-                handleSearch
+                isFav
             }}>
             {children}
         </MoviesContext.Provider>
