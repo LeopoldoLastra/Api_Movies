@@ -39,10 +39,9 @@
   overflow-y: hidden; 
 }
 
-.cards_container::-webkit-scrollbar { 
-  width: 0!important }
-
-
+.cards_container::-webkit-scrollbar{ 
+  width: 0!important 
+}
 
 .footer{
   display: flex;

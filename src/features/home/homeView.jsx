@@ -3,8 +3,8 @@ import { useContext, useState} from 'react';
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import Header from '../../core/components/header/header';
 import Banner from '../../core/components/banner/Banner';
-
 import { MoviesContext } from '../../context/MoviesContext';
+import { Footer } from '../../core/components/footer/footer';
 
 
 
@@ -43,9 +43,16 @@ const HomeView = ()=>{
         <section className='carrousel_container'>
                 <Carrousel tipe={'now_playing'}/>
         </section>
-      </main>
-      <footer className='footer'>
-      </footer>
+      
+        <section className='carrousel_container'>
+          <h2>Upcoming</h2> 
+            <div className='cards_container'>
+                <Carrousel type={'upcoming'}/>
+                <div className='cards'></div>
+            </div>
+        </section>
+      </main>  
+      <Footer />
   </>
     
 )};

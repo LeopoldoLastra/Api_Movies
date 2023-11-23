@@ -2,9 +2,9 @@ import { Card } from '../card/card';
 import { useTmdb } from '../../services/useTmdb';
 import style from './carrusel.module.css'
 
-const Carrousel = ({tipe, movieId, time})=>{
+const Carrousel = ({type, movieId, time, kindOfSearch})=>{
 
-    const {information, error} = useTmdb({tipe, movieId, time});
+    const {information, error} = useTmdb({type, movieId, time, kindOfSearch});
 
     let sectionTitle = tipe.toUpperCase().replace('_', ' ');
     
@@ -17,7 +17,7 @@ const Carrousel = ({tipe, movieId, time})=>{
                     key={e.id}
                     id={e.id}
                     title={e.title}
-                    img={e.poster_path}/> 
+                    img={e.poster}/> 
            
         )}
         </div>
