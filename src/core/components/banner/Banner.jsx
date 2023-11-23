@@ -66,7 +66,8 @@ const Banner = () => {
                                                 
                                             </div>
                                     </div>
-                                    <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.original_title} style={stylesImg}/>
+                                    <img 
+                                        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.original_title} style={stylesImg}/>
                             </swiper-slide>
                     ))
                 }

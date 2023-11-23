@@ -24,8 +24,8 @@ const HomeView = ()=>{
   return(
   <>
       <Header/>
+      <Banner />
       <main className='body'>
-        <Banner />
         <section className='carrousel_container'>
           <div className='carrousel_container_head'>
             <div className='carrousel_container_head_buttons' >
@@ -33,24 +33,10 @@ const HomeView = ()=>{
               <button value={'week'}onClick={(e)=>selectedTime(e)}>Week</button>
             </div>
           </div>
-          <section className='carrousel_container'>
-                <Carrousel tipe={'trending'} time={timeWindow}/>
-          </section>
         </section>
-        <section className='carrousel_container'> 
-                <Carrousel tipe={'upcoming'}/>
-        </section>
-        <section className='carrousel_container'>
-                <Carrousel tipe={'now_playing'}/>
-        </section>
-      
-        <section className='carrousel_container'>
-          <h2>Upcoming</h2> 
-            <div className='cards_container'>
-                <Carrousel type={'upcoming'}/>
-                <div className='cards'></div>
-            </div>
-        </section>
+        <Carrousel type={'trending'} time={timeWindow}/>
+        <Carrousel type={'upcoming'}/>
+        <Carrousel type={'now_playing'}/>
       </main>  
       <Footer />
   </>

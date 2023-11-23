@@ -17,6 +17,7 @@
     grid-template-columns: 1fr 1fr;
     place-content: center;
     place-items: center;
+    gap: 20px;
     width: 100%;
     max-width: 900px;
     margin: 20px auto;

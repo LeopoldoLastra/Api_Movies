@@ -1,7 +1,7 @@
 
 .genre_list_container{
     margin: auto;
-    max-width: 300px;
+    width: 300px;
 }
 
 select{

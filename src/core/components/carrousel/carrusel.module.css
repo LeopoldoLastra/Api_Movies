@@ -1,5 +1,27 @@
+.carrouselTitle{
+    text-align: right;
+    padding-right: 50px;
+}
 .cardsContainer{
     display: flex;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px;
+    width: 100%;
+    padding: 10px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    overflow-y: hidden;
+}
+
+@media screen and (min-width:900px){
+    .cardsContainer a{
+        transition: all .1s ease-in;
+    }
+    .cardsContainer a:hover{
+        transform: scale(1.07);
+        z-index:4;
+    }
+    .cardsContainer:has(a:hover) a:not(:hover){
+        transform:scale(.9)
+    }
 }
