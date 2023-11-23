@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 import { useTmdb } from '../../services/useTmdb';
 import { NavLink } from 'react-router-dom';
 
-const List = ({searchedMovie, selectedCategoryId, kindOfSearch})=>{
+const List = ({searchedMovie, selectedCategoryName, kindOfSearch, selectedCategory})=>{
 
 //Filtro por genero
 
     let pathSelection ='discover'
     let genreSelection = 'all_genres'
-
-    if(selectedCategoryId!=='all genres'){
+    const{id, name} = selectedCategory
+    if(id!=='all genres'){
         pathSelection = 'discover_by_genre'
-        genreSelection = selectedCategoryId  
+        genreSelection = id  
     }
-
+    console.log(genreSelection)
     const {information, error}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
 
 //Filtro por búsqueda

@@ -1,15 +1,12 @@
 import './footer.css';
-import React, { useContext, useEffect } from 'react';
 
-
-
-const Footer = () => {
+export const Footer = () => {
 
     return(
 
-            <div className='footer'>Contacto</div>
+        <footer className='footer'>
+            <p>Copyright &copy; 2023 - Codo a Codo ReactJs</p>
+        </footer>
   
     )
 }
-
-export {Footer}

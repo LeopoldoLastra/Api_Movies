@@ -39,52 +39,41 @@ const DetailView = ()=>{
       <Header/>
       <main className='body' >
           <div className='detail_main_container'>
-            <img class='detail_img' src={`https://image.tmdb.org/t/p/original${information.poster}`} />
-          
-            
-
-            <div >
-                <section className='body_action_bar' >
-                    <BiLike className='icon'/>
-                    <span 
-                      onClick={() => saveMovie()} 
-                      className='icon'>
-                      {
-                        isFavMovie.length>0 && <IoBookmarkSharp/> || <IoBookmarkOutline/>
-                      }
-                    </span>
-                    <IoShareSocialOutline className='icon' />
-                  </section>
-
-                  <section className='description_container'>
-                      <div className='detail_container'>
-                        <h1>{information?.title}</h1>
-                        <p>{information?.overview}</p>
-                        
-                      </div>
-                  </section>
+            <img 
+              className='detail_img' 
+              src={`https://image.tmdb.org/t/p/original${information.poster}`} 
+              />
+            <div>
+              <section className='body_action_bar' >
+                <BiLike className='icon'/>
+                <span 
+                  onClick={() => saveMovie()} 
+                  className='icon'>
+                  {
+                    isFavMovie.length>0 && <IoBookmarkSharp/> || <IoBookmarkOutline/>
+                  }
+                </span>
+                <IoShareSocialOutline className='icon' />
+              </section>
+              <section className='description_container'>
+                <div className='detail_container'>
+                  <h1>{information?.title}</h1>
+                  <p>{information?.overview}</p>
+                </div>
+              </section>
+            </div>    
           </div>
-                
-          </div>
-                <section className='carrousel_container'>
-                  <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
-                    <div className='cards_container'>
-                        <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
-                        <div className='cards'></div>
-                        
-                    </div>
-                </section> 
-                  
-          <div className='footer_container'>
-              <Footer/>
-          </div>
-                
+            <section className='carrousel_container'>
+              <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
+                <div className='cards_container'>
+                    <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+                    <div className='cards'></div>
+                    
+                </div>
+            </section>          
       </main>
-      
-      
-      
+      <Footer />
   </>
-    
 )};
 
 export {DetailView};

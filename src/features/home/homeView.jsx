@@ -20,19 +20,8 @@ const HomeView = ()=>{
 
   return(
   <>
-  
       <Header/>
-      
       <main className='body'>
-        
-        {/* <section className='introduccion_container'>
-          <h2>¿Qué miramos hoy?</h2>
-          <form name='search' className='searcher'>
-            <label><HiSearch/></label>
-            <input type='text' placeholder='buscar' className='searcher_box'/>
-          </form>
-        </section> */}
-
         <section className='carrousel_container'>
           <div className='carrousel_container_head'>
             <h2>Trending</h2>
@@ -40,17 +29,12 @@ const HomeView = ()=>{
               <button value={'day'} onClick={(e)=>selectedTime(e)}>Day</button> 
               <button value={'week'}onClick={(e)=>selectedTime(e)}>Week</button>
             </div>
-            
           </div>
-          
-            
             <div className='cards_container'>
                 <Carrousel type={'trending'} time={timeWindow}/>
                 <div className='cards'></div>
-                
             </div>
         </section>
-
         <section className='carrousel_container'>
           <h2>Upcoming</h2> 
             <div className='cards_container'>
@@ -58,7 +42,6 @@ const HomeView = ()=>{
                 <div className='cards'></div>
             </div>
         </section>
-
         <section className='carrousel_container'>
           <h2>En cartelera</h2> 
             <div className='cards_container'>
@@ -66,13 +49,8 @@ const HomeView = ()=>{
                 <div className='cards'></div>
             </div>
         </section>
-
-        <Footer/>
-    
-
       </main>
-
-      
+      <Footer />
   </>
     
 )};

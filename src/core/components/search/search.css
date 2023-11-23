@@ -1,0 +1,30 @@
+.searcher{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.searcher_input{
+    background: url('./lupa.svg') no-repeat center center, #ccc;
+    background-size: 35px;
+    color: var(--black);
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border-bottom: 1px solid var(--black);
+    transition: all .3s;
+    cursor: default;
+    position: relative;
+}
+.searcher_input:focus{
+    background-position: 95% center;
+    background-size: 25px;
+    border: 1px solid #aaa;
+}
+
+@media screen and (max-width: 770px){
+    .searcher_input{
+        height: 50px;
+    }
+}
