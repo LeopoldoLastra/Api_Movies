@@ -4,17 +4,27 @@
 .header{
   width: 100%;
   display: flex;
-  gap: 150px;
   align-items: center;
+  justify-content: space-between;
   height: 80px;
   padding: 0 20px;
 }
 .logo{
-  min-width: 200px;
+  min-width: 120px;
+  max-width: 120px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.logo::after{
+  content:'';
+  height: 80%;
+  position: absolute;
+  top: 15%;
+  right: 0;
+  border-right: 2px solid var(--dark-red);
 }
 .userHorizontal{
   width: 100px;
