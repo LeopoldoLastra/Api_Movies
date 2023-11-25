@@ -80,4 +80,4 @@ const DetailView = ()=>{
   </>
 )};
 
-export {DetailView};
+export default DetailView;

@@ -44,4 +44,4 @@ const HomeView = ()=>{
 )};
 
 
-export {HomeView};
+export default HomeView;
