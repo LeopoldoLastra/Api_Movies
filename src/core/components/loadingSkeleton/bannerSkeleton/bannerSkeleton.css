@@ -1,0 +1,67 @@
+.banner_skeleton{
+    background-color: var(--darkWhite);
+    width: 100vw;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: 30% 70%;
+   
+   
+}
+
+.text_skeleton{
+    background-color: var(--darkWhite);
+    position: relative;
+    border-radius: 5px;
+    margin: 15px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    animation: loading-skeleton infinite 1.7s 1s;
+    
+
+}
+
+.like_skeleton{
+    background-color: var(--softGrey);
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 8vw;
+    bottom: 5vh;
+    z-index: 10;
+    border-radius: 80%;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    animation: loading-skeleton infinite 1.7s 1s ;
+}
+
+.play_skeleton{
+background-color: var(--softGrey);
+width: 25px;
+height: 25px;
+position: absolute;
+right: 5vw;
+bottom: 5vh;
+z-index: 10;
+border-radius: 80%;
+box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+animation: loading-skeleton infinite 1.7s 1s;
+}
+
+.slide_skeleton{
+margin:15px;
+background-color: var(--darkWhite);
+border-radius: 5px;
+box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+animation: loading-skeleton infinite 1.7s 2s;
+}
+
+
+
+
+/* Animations */
+@keyframes loading-skeleton {
+    0%, 100% {
+      opacity: 100%;
+    }
+    50% {
+      opacity: 0%;
+    }
+  }

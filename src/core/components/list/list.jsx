@@ -2,6 +2,9 @@ import './list.css'
 import React, { useState } from 'react';
 import { useTmdb } from '../../services/useTmdb';
 import { NavLink } from 'react-router-dom';
+import { ListSkeleton } from '../loadingSkeleton/listSkeleton/listSkeleton';
+import { MoviesContext } from '../../../context/MoviesContext';
+import { useContext } from 'react';
 
 const List = ({searchedMovie, selectedCategoryName, kindOfSearch, selectedCategory})=>{
 
@@ -14,8 +17,8 @@ const List = ({searchedMovie, selectedCategoryName, kindOfSearch, selectedCatego
         pathSelection = 'discover_by_genre'
         genreSelection = id  
     }
-    console.log(genreSelection)
-    const {information, error}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
+
+    const {information, error, isLoading}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
 
 //Filtro por búsqueda
 
@@ -27,11 +30,19 @@ const List = ({searchedMovie, selectedCategoryName, kindOfSearch, selectedCatego
 
     }
 
+    const {setMovieId}=useContext(MoviesContext)
+
+
+    const handleOnClick = (id)=>{
+        setMovieId(id)
+
+      
+    }
     return(
         <>
-          {list.map((movie)=>{return(
+          {isLoading ? <ListSkeleton/> : list.map((movie)=>{return(
                 
-                    <div key={movie.id}>
+                    <div key={movie.id} id={movie.id} onClick={()=>{handleOnClick(movie.id)}}>
                         <NavLink to={`/${kindOfSearch}/${movie.id}` } >
                             <div className='list_content' >
                                 <img src={`https://image.tmdb.org/t/p/original${movie.poster}`}/>

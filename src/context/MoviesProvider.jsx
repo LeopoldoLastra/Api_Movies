@@ -34,13 +34,17 @@ export default function MoviesProvider({children}) {
         }
     },[])
 
-    
+    const [movieId, setMovieId]= useState((location.hash.split('/'))[2])
+
     return(
         <MoviesContext.Provider
             value={{
                 favs,
                 handleFavs,
-                isFav
+                isFav,
+                movieId,
+                setMovieId
+
             }}>
             {children}
         </MoviesContext.Provider>

@@ -26,6 +26,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
                     genres: e.genre_ids,
                     overview: e.overview,
                     vote: e.vote_average
+                    
                })))
         }
     }
@@ -47,6 +48,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
         }else if(type === 'now_playing'){
             path=`${URL}/movie/now_playing`
         }else if(type==='similar'){
+            
             path=`${URL}/${kindOfSearch}/${movieId}/similar`   
         }else if(type==='trending'){
             path=`${URL}/trending/movie/${time}`

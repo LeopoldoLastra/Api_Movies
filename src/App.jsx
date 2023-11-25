@@ -11,7 +11,6 @@ register()
 
 const App = ()=>{
 
-    
     return(
         <MoviesProvider>
             <HashRouter>

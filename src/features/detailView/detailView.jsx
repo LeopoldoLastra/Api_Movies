@@ -7,21 +7,25 @@ import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-
 import { BiLike } from 'react-icons/bi';
 import './detailView.css'
 import Header from '../../core/components/header/header';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Footer } from '../../core/components/footer/footer';
 
 
 const DetailView = ()=>{
 
-  const {handleFavs, isFav} = useContext(MoviesContext)
+  
+
+  const {handleFavs, isFav, movieId} = useContext(MoviesContext)
 
   const locationHash = ((location.hash.split('/')))
 
-  const [movieId, setMovieId]= useState((locationHash[2]))
+  
+
   
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
- 
+
+  
   const selectedMovie = { 
     id:information.id,
     title:information.title,
