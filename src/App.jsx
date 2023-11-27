@@ -1,30 +1,37 @@
 import { HashRouter, Route, Routes} from 'react-router-dom';
 import { register } from 'swiper/element/bundle';
 import MoviesProvider from './context/MoviesProvider';
-import { HomeView } from './features/home/homeView';
-import { LoginView } from './features/login/loginView';
-import { DetailView } from './features/detailView/detailView';
-import {MoviesContext} from './context/MoviesContext';
-import { DiscoverView } from './features/discoverView/discoverView';
+import { lazy } from 'react';
+import { Suspense } from 'react';
+import Spinner from './core/components/spinner/spinner';
+
 
 register()
 
 const App = ()=>{
 
+
+    const HomeView = lazy(()=>import('./features/home/homeView'))
+    const LoginView = lazy(()=>import('./features/login/loginView'))
+    const DetailView = lazy(()=>import('./features/detailView/detailView'))
+    const DiscoverView = lazy(()=>import('./features/discoverView/discoverView'))
     
+
     return(
         <MoviesProvider>
             <HashRouter>
-               
-                <Routes>
-                    <Route path='/' element={<HomeView/>}/>
-                    <Route path='/login' element={<LoginView/>}/>
-                    <Route path='/movie/:slug' element={<DetailView/>}/>
-                    <Route path='/tv/:slug' element={<DetailView/>}/>
-                    <Route path='/movie' element={<DiscoverView/>}/>
-                    <Route path='/tv' element={<DiscoverView/>}/>
+               <Suspense fallback={<Spinner/>}>
 
-                </Routes>
+                    <Routes>
+                        <Route path='/' element={<HomeView/>}/>
+                        <Route path='/login' element={<LoginView/>}/>
+                        <Route path='/movie/:slug' element={<DetailView/>}/>
+                        <Route path='/tv/:slug' element={<DetailView/>}/>
+                        <Route path='/movie' element={<DiscoverView/>}/>
+                        <Route path='/tv' element={<DiscoverView/>}/>
+
+                    </Routes>
+                </Suspense>
             </HashRouter>
         </MoviesProvider>
     )

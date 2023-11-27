@@ -66,4 +66,4 @@ const DiscoverView = ()=>{
     )
 }
 
-export {DiscoverView}
+export default DiscoverView;

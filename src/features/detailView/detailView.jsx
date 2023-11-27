@@ -7,21 +7,25 @@ import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-
 import { BiLike } from 'react-icons/bi';
 import './detailView.css'
 import Header from '../../core/components/header/header';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Footer } from '../../core/components/footer/footer';
 
 
 const DetailView = ()=>{
 
-  const {handleFavs, isFav} = useContext(MoviesContext)
+  
+
+  const {handleFavs, isFav, movieId} = useContext(MoviesContext)
 
   const locationHash = ((location.hash.split('/')))
 
-  const [movieId, setMovieId]= useState((locationHash[2]))
+  
+
   
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
- 
+
+  
   const selectedMovie = { 
     id:information.id,
     title:information.title,
@@ -43,7 +47,7 @@ const DetailView = ()=>{
               className='detail_img' 
               src={`https://image.tmdb.org/t/p/original${information.poster}`} 
               />
-            <div>
+            <div className='container-bar-info'>
               <section className='body_action_bar' >
                 <BiLike className='icon'/>
                 <span 
@@ -63,17 +67,14 @@ const DetailView = ()=>{
               </section>
             </div>    
           </div>
-            <section className='carrousel_container'>
-              <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
-                <div className='cards_container'>
-                    <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
-                    <div className='cards'></div>
-                    
-                </div>
-            </section>          
+          <section className='relacionadas'>
+            <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
+            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+              
+          </section>          
       </main>
       <Footer />
   </>
 )};
 
-export {DetailView};
+export default DetailView;

@@ -1,92 +1,90 @@
 
 .body{
   border-radius: 16px;
-  margin: 10px auto;
+  margin: auto;
+  margin-top: 65px;
   width: 100vw;
   z-index: 1;
+}
+.container-bar-info{
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 .body_action_bar{
   width: 100%;
   display: grid;
+  border-radius: 10px;
+  margin: 5px auto;
   grid-template-columns: 33% 33% 33%;
   justify-items: center;
-  background-color: var(--grey);
+  align-items: center;
+  overflow: hidden;
+  place-content: center;
+  background-color:rgba(10,80,89,.5);
 }
-
-.icon{
-  color: var(--white);
-  font-size: 150%;
-  margin: 16px;
+.body_action_bar .icon{
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 35px;
+  overflow: hidden;
   cursor: pointer;
+  color: var(--white);
+  display: flex;
+  padding: 5px;
+  place-content: center;
+}
+.icon:hover{
+  background-color: rgba(10,80,99,.5);
+}
+.body_action_bar .icon:not(:last-child){
+  border-right: 1px solid var(--grey);
+
 }
 .detail_img{
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-radius: 10px;
   width: 100%;
-
-  object-fit:cover;
+  object-fit: cover;
 }
 
 .description_container{
+  margin: 10px;
+  letter-spacing: 1.2px;
+  padding: 10px;
   display: flex;
-
-
   flex-direction: column;
   margin: 0px 0px;
 }
-
-
 
 .trend_container{
   width: 100vw;
 }
 
-.cards_container{
-  white-space: nowrap;
-  padding: 4px;
-  overflow-x: scroll;
-  overflow-y: hidden; 
+.relacionadas h2:first-child{
+  margin: 20px auto;
+  display: flex;
+  place-content: center;
 }
 
-.cards_container::-webkit-scrollbar { 
-  width: 0!important }
-
-
-  .footer_container{
-
-  width: 100%;
-  height: 20vh;
-  color: var(--white);
-  background-color: var(--grey);
-  position: relative;
-  bottom: 0px;
+@media screen and (min-width: 767px){
+  .body{
+    padding: 10px;
+    margin-top: 80px;
   }
-
-  @media screen and (min-width: 770px){
-    .body{
-      padding: 32px 8px;
-    }
-    .detail_main_container{
-      display: grid;
-      grid-template-columns: repeat(2,50%);
-      justify-items: center;
-    }
+  .detail_main_container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: center;
+    align-items: center;
+  }
+  .detail_img{
+    justify-content: center;
+    width: 90%;
+    height: 80%;
+    object-fit:cover;
     
-    .detail_img{
-      justify-content: center;
-      width: 50%;
-      height: 100%;
-      object-fit:cover;
-      
-    }
-
-    .body_action_bar{
-      display: grid;
-      grid-template-columns: 33% 33% 33%;
-      justify-items: center;
-      background-color: var(--grey);
-      border-top-left-radius: 32px;
-      border-top-right-radius: 32px;
-    }
-
+  }
 }
