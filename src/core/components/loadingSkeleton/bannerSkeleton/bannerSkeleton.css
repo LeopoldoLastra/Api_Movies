@@ -53,9 +53,6 @@ box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
 animation: loading-skeleton infinite 1.7s 2s;
 }
 
-
-
-
 /* Animations */
 @keyframes loading-skeleton {
     0%, 100% {

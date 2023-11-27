@@ -47,7 +47,7 @@ const DetailView = ()=>{
               className='detail_img' 
               src={`https://image.tmdb.org/t/p/original${information.poster}`} 
               />
-            <div>
+            <div className='container-bar-info'>
               <section className='body_action_bar' >
                 <BiLike className='icon'/>
                 <span 
@@ -67,14 +67,11 @@ const DetailView = ()=>{
               </section>
             </div>    
           </div>
-            <section className='carrousel_container'>
-              <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
-                <div className='cards_container'>
-                    <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
-                    <div className='cards'></div>
-                    
-                </div>
-            </section>          
+          <section className='relacionadas'>
+            <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
+            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+              
+          </section>          
       </main>
       <Footer />
   </>

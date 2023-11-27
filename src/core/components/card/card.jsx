@@ -5,23 +5,18 @@ import { useContext } from 'react';
 import { MoviesContext } from '../../../context/MoviesContext';
 
 const Card = ({title, img, id, kindOfSearch})=>{
-
         
         const {setMovieId}=useContext(MoviesContext)
 
-
         const handleOnClick = ()=>{
             setMovieId(id)
-    
-          
         }
-
-       
 
     return(
         <>
-            <NavLink to={`/${kindOfSearch}/${id}`}
-            >
+            <NavLink 
+                to={`/${kindOfSearch}/${id}`}
+                >
                 <div
                     className='cards'
                     onClick={()=>{handleOnClick()}}

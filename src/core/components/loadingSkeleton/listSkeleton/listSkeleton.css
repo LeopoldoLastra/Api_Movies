@@ -13,7 +13,7 @@
     background-color: var(--darkWhite);
     border-radius: 10px;
     margin-top: 5px;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.55);
     animation: loading-skeleton infinite 1.7s;
 
   }
@@ -24,7 +24,7 @@
     background-color: var(--darkWhite);
     border-radius: 10px;
     margin-top: 5px;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.55);
     animation-delay: 0.2;
     animation: loading-skeleton infinite 1.7s;
     
