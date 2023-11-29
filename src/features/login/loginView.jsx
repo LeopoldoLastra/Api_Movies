@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { auth } from "./firebase/firebase.js";
+import { auth } from "./firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import './loginView.css';
+import { Footer } from "../../core/components/footer/footer";
 
 const LoginView = () => {
     const [email, setEmail] = useState("");
@@ -37,15 +38,7 @@ const LoginView = () => {
     return (
         <div className="login-body">
             <div className="container-login">
-                {/*<div className="background-container">
-                    <img
-                        className="background-image"
-                        alt="Background"
-                    />
-                </div>*/}
-
                 <div className="form-container sign-in-container">
-                    {/*<img className="logo" src={logo} alt="imagen logo principal" />*/}
                     <form className="form-login" onSubmit={submit}>
                         <h1 className="h1-login-left">Iniciar Sesión</h1>
                         <div className="email">
@@ -77,17 +70,16 @@ const LoginView = () => {
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
                         </div>
-                        {error && (
-                            <span className="error">Informacion de Sesion Incorrecta.</span>
-                        )}
-
-
+                        {
+                            error && (
+                                <span className="error">Informacion de Sesion Incorrecta.</span>
+                            )
+                        }
                         <button className="button-login" type="submit">
                             Ingresar
                         </button>
                     </form>
                 </div>
-
                 <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-right">
@@ -97,14 +89,9 @@ const LoginView = () => {
                     </div>
                 </div>
             </div>
-            <footer>
-                <p className="p-login">
-                    Creado por
-                    Equipo Codo a Codo - Mati, Fede, Leo y Pati
-                </p>
-            </footer>
+            <Footer />
         </div>
     );
 };
 
-export { LoginView };
+export default LoginView;

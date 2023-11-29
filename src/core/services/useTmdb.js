@@ -33,6 +33,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
                     genres: e.genre_ids,
                     overview: e.overview,
                     vote: e.vote_average
+                    
                })))
         }
     }

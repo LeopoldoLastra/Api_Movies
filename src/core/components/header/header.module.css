@@ -8,6 +8,10 @@
   justify-content: space-between;
   height: 80px;
   padding: 0 20px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: #121212;
 }
 .logo{
   min-width: 120px;
@@ -56,6 +60,7 @@
     max-width: 100%;
     padding: 0 20px;
     overflow: hidden;
+    height: 60px;
   }
   .logo{
     width: 100%;

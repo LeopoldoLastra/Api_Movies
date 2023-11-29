@@ -1,8 +1,15 @@
-.login_container {
-    position: relative;
-    margin: 55% 10%;
+.login-body {
+    box-sizing: border-box;
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: auto;
+    padding-top: 40px;
 }
-
 .login_form {
     display: flex;
     flex-direction: column;
@@ -25,17 +32,6 @@
 }
 
 /*ESTILOS LOGIN.CSS*/
-.login-body {
-    box-sizing: border-box;
-    background: #f6f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-    height: 90vh;
-    margin: -20px 0 50px;
-}
 
 .h1-login {
     font-weight: bold;
@@ -55,37 +51,32 @@
 }
 
 .button-login {
-    border-radius: 20px;
-    border: 1px solid #FF4B2B;
+    border-radius: 10px;
+    border: none;
     background-color: #FF4B2B;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
+    padding: 0;
+    cursor: pointer;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
-    justify-content: center;
-    width: auto;
-    margin-top: 10px;
+    
 }
 
 .button-login:active {
     transform: scale(0.95);
 }
 
-.button-login:focus {
-    outline: none;
-}
-
 .form-login {
     background-color: #FFFFFF;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     padding: 0 50px;
     height: 100%;
+    gap: 20px;
     text-align: center;
 }
 
@@ -107,6 +98,7 @@
 	width: 768px;
 	max-width: 100%;
 	min-height: 430px;
+    margin-bottom: 25px;
 }
 
 .form-container {

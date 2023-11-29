@@ -1,0 +1,29 @@
+.spinner_container{
+    width: 100vw;
+    height: 100vh;
+
+   
+    
+}
+.spinner{
+   position: absolute;
+    top:45%;
+    right: 45%;
+    
+    border: 4px solid rgba(250, 250, 250, 0.1);
+    border-left-color: transparent;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }

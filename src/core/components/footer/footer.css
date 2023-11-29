@@ -7,5 +7,7 @@
     width: 100%;
     font-weight: bold;
     cursor: default;
+    min-height: 80px;
     margin: 0 auto;
+    z-index:5;
 }

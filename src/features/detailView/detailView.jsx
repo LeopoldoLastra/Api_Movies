@@ -1,21 +1,20 @@
 
-import { HiOutlineUser, HiSearch, HiMenu } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import { useTmdb } from '../../core/services/useTmdb';
 import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-icons/io5';
 import { BiLike } from 'react-icons/bi';
 import './detailView.css'
 import Header from '../../core/components/header/header';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Footer } from '../../core/components/footer/footer';
 
 
 const DetailView = ()=>{
 
-  const {handleFavs, isFav} = useContext(MoviesContext)
+  const {handleFavs, isFav, movieId} = useContext(MoviesContext)
 
+<<<<<<< HEAD
   const locationHash = ((location.pathname.split('/')))
 
   
@@ -25,6 +24,13 @@ const DetailView = ()=>{
  
 console.log('el detalle es', information)
 
+=======
+  const locationHash = ((location.hash.split('/')))
+  
+  const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
+
+  
+>>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
   const selectedMovie = { 
     id:information.id,
     title:information.title,
@@ -48,7 +54,7 @@ console.log('el detalle es', information)
               className='detail_img' 
               src={`https://image.tmdb.org/t/p/original${information.poster}`} 
               />
-            <div>
+            <div className='container-bar-info'>
               <section className='body_action_bar' >
                 <BiLike className='icon'/>
                 <span 
@@ -68,6 +74,7 @@ console.log('el detalle es', information)
               </section>
             </div>    
           </div>
+<<<<<<< HEAD
             <section className='carrousel_container'>
               <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
                 <div className='cards_container'>
@@ -76,9 +83,16 @@ console.log('el detalle es', information)
                     
                 </div>
             </section>          
+=======
+          <section className='relacionadas'>
+            <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
+            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+              
+          </section>          
+>>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
       </main>
       <Footer />
   </>
 )};
 
-export {DetailView};
+export default DetailView;

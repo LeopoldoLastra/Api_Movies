@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../features/login/firebase/firebase";
 
-const auth = getAuth();
+// const auth = getAuth();
 
 const authReducer = (state, action) => {
     switch (action.type) {
@@ -19,11 +20,7 @@ const initialState = {
     loading: true,
 };
 
-const AuthContext = createContext();
-
-export function useAuth() {
-    return useContext(AuthContext);
-}
+const authContext = createContext();
 
 export function AuthContextProvider({ children }) {
     const [state, dispatch] = useReducer(authReducer, initialState);
@@ -36,7 +33,6 @@ export function AuthContextProvider({ children }) {
                 dispatch({ type: "LOGOUT" });
             }
         });
-
         return () => {
             unsubscribe();
         };
@@ -49,8 +45,15 @@ export function AuthContextProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ currentUser: state.currentUser}}>
+        <authContext.Provider 
+            value={{ 
+                currentUser: state.currentUser
+            }}>
             {children}
-        </AuthContext.Provider>
+        </authContext.Provider>
     );
+}
+
+export function useAuth() {
+    return useContext(authContext);
 }

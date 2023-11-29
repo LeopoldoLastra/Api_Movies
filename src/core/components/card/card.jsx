@@ -1,15 +1,23 @@
 import './card.css'
 import React from 'react';
 import { NavLink} from 'react-router-dom';
+import { useContext } from 'react';
+import { MoviesContext } from '../../../context/MoviesContext';
 
-const Card = ({title, img, id})=>{
+const Card = ({title, img, id, kindOfSearch})=>{
+        
+        const {handleClick}=useContext(MoviesContext)
+
+
 
     return(
         <>
-            <NavLink to={`/movie/${id}`}
-            >
+            <NavLink 
+                to={`/${kindOfSearch}/${kindOfSearch}/${id}`}
+                >
                 <div
                     className='cards'
+                    onClick={()=>handleClick(kindOfSearch, id)}
                     >
                         <img src={`https://image.tmdb.org/t/p/original${img}`}/>
                         <div className="card-info">{title}</div>
