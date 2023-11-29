@@ -13,8 +13,8 @@ const GenreList = ({kindOfSearch, handlerGenre})=>{
                 className='genre_list'
                 name='categoria'
                 onChange={(e)=>handlerGenre(e)}>
-                <option id="all genres" name='Todas'>Todos los géneros</option>
-               
+                <option id="all genres" name='all_genres'>Todos los géneros</option>
+                
                 {
                     information?.genres?.map(genre =>(
                         <option
