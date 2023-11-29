@@ -6,20 +6,18 @@ import { MoviesContext } from '../../../context/MoviesContext';
 
 const Card = ({title, img, id, kindOfSearch})=>{
         
-        const {setMovieId}=useContext(MoviesContext)
+        const {handleClick}=useContext(MoviesContext)
 
-        const handleOnClick = ()=>{
-            setMovieId(id)
-        }
+
 
     return(
         <>
             <NavLink 
-                to={`/${kindOfSearch}/${id}`}
+                to={`/${kindOfSearch}/${kindOfSearch}/${id}`}
                 >
                 <div
                     className='cards'
-                    onClick={()=>{handleOnClick()}}
+                    onClick={()=>handleClick(kindOfSearch, id)}
                     >
                         <img src={`https://image.tmdb.org/t/p/original${img}`}/>
                         <div className="card-info">{title}</div>

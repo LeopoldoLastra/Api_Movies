@@ -9,7 +9,7 @@ const ItemsMenu = ({orientation}) => {
           ? style.horizontal 
           : style.vertical
         }>
-        <li className={style.link}><Link to={'/'}>Inicio</Link></li>
+        <li className={style.link}><Link to={'/inicio'}>Inicio</Link></li>
         <li className={style.link}><Link to={'/movie'}>Peliculas</Link></li>
         <li className={style.link}><Link to={'/tv'}>Series</Link></li>
         <li className={style.link}><Link to={'/'}>Nosotros</Link></li>

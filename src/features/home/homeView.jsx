@@ -4,9 +4,12 @@ import { Carrousel } from '../../core/components/carrousel/carrousel';
 import Header from '../../core/components/header/header';
 import Banner from '../../core/components/banner/Banner';
 import { Footer } from '../../core/components/footer/footer';
+import { useAuth } from '../../context/AuthContext';
 
 const HomeView = ()=>{
 
+  const {currentUser} = useAuth()
+  
   const [timeWindow, setTimeWindow] = useState('day')
 
   function selectedTime(e){

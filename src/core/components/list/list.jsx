@@ -6,59 +6,50 @@ import { MoviesContext } from '../../../context/MoviesContext';
 import { useContext } from 'react';
 import { Card } from '../card/card';
 
-const List = ({searchedMovie, selectedCategoryName, kindOfSearch, selectedCategory})=>{
+const List = ({searchedMovie, kindOfSearch, selectedCategory})=>{
 
 //Filtro por genero
 
     let pathSelection ='discover'
     let genreSelection = 'all_genres'
     const{id, name} = selectedCategory
+
     if(id!=='all genres'){
         pathSelection = 'discover_by_genre'
         genreSelection = id  
     }
 
     const {information, error, isLoading}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
-
+    
 //Filtro por búsqueda
-
-    let list = information
-
+    let list;
     if(searchedMovie !== ''){
-        
-        list = information.filter(movie=> (movie.title.toLowerCase()).includes((`${searchedMovie}`).toLowerCase()))
-
+        list = information.filter(movie=> (movie.title.toLowerCase()).includes((`${searchedMovie}`).toLowerCase()))   
+    }else{
+        list = information
     }
-
     const {setMovieId}=useContext(MoviesContext)
-
-
-    const handleOnClick = (id)=>{
-        setMovieId(id)
-
-      
-    }
+    // const handleOnClick = (id)=>{
+    //     setMovieId(id)
+    // }
     return(
         <>
-          {
-            isLoading 
-            ? <ListSkeleton/> 
-            : list.map((movie)=>{return(
-                <Card
-                    key={movie.id}
-                    onClick={()=>handleOnClick(movie.id)}
-                    title={movie.title}
-                    id={movie.id}
-                    img={movie.poster}
-                    kindOfSearch={kindOfSearch}
-                    className='list_content'/>
-                    )})}
-                        {/* <NavLink to={`/${kindOfSearch}/${movie.id}` } >
-                            <div className='list_content' >
-                                <img src={`https://image.tmdb.org/t/p/original${movie.poster}`}/>
-                                <p>{ movie.title }</p>
-                            </div>
-                        </NavLink> */}
+            {
+                isLoading 
+                    ? <ListSkeleton/> 
+                    : ( list &&
+                            list?.map( movie => (
+                                <Card
+                                    key={movie.id}
+                                    // onClick={()=>handleOnClick(movie.id)}
+                                    title={movie.title}
+                                    id={movie.id}
+                                    img={movie.poster}
+                                    kindOfSearch={kindOfSearch}
+                                    className='list_content'/>
+                                    ))
+                            ||   null)
+            }
         </>
     )
 }

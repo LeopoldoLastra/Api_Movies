@@ -1,7 +1,6 @@
 import './discoverView.css'
 import React, { useState } from 'react';
 import Header from '../../core/components/header/header';
-import { HiSearch } from 'react-icons/hi';
 import { GenreList } from '../../core/components/genre/genreList';
 import { List } from '../../core/components/list/list';
 import { Footer } from '../../core/components/footer/footer';
@@ -10,7 +9,8 @@ import Search from '../../core/components/search/Search';
 
 const DiscoverView = ()=>{
 
-   const kindOfSearch = location.hash.split('/')[1]
+   const kindOfSearch = window.location.pathname
+   console.log(kindOfSearch)
 
     //Se utiliza movie de forma genérica (tanto para movies como para series)
     

@@ -1,27 +1,20 @@
 
-import { HiOutlineUser, HiSearch, HiMenu } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import { useTmdb } from '../../core/services/useTmdb';
 import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-icons/io5';
 import { BiLike } from 'react-icons/bi';
 import './detailView.css'
 import Header from '../../core/components/header/header';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Footer } from '../../core/components/footer/footer';
 
 
 const DetailView = ()=>{
 
-  
-
   const {handleFavs, isFav, movieId} = useContext(MoviesContext)
 
   const locationHash = ((location.hash.split('/')))
-
-  
-
   
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
 
