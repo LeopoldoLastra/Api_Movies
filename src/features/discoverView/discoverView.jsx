@@ -6,11 +6,13 @@ import { GenreList } from '../../core/components/genre/genreList';
 import { List } from '../../core/components/list/list';
 import { Footer } from '../../core/components/footer/footer';
 import Search from '../../core/components/search/Search';
+import { MyList } from '../../core/components/MyList/myList';
+import { GenresOfMyList } from '../../core/components/genre/genresOfMyList';
 
 
 const DiscoverView = ()=>{
 
-   const kindOfSearch = location.hash.split('/')[1]
+   const kindOfSearch = location.pathname.split('/')[1]
 
     //Se utiliza movie de forma genérica (tanto para movies como para series)
     
@@ -27,7 +29,7 @@ const DiscoverView = ()=>{
     const handlerGenre=(e)=>{
         const index = e.target.selectedIndex;
         const option = e.target.childNodes[index]
-        const optionId =  option.getAttribute('id');
+        const optionId = Math.floor( option.getAttribute('id'));
         setSearchedMovie('')
         setSelectedCategory({
             id:optionId,
@@ -44,20 +46,27 @@ const DiscoverView = ()=>{
                 <Search 
                     handlerSearchChange={handlerSearchChange}
                     searchedMovie={searchedMovie
-                    }/>
-                <GenreList
-                    handlerGenre={handlerGenre}
-                    kindOfSearch={kindOfSearch}/>
+                    }/> 
+               { kindOfSearch!=='my-list' 
+                    ? <GenreList
+                        handlerGenre={handlerGenre}
+                        kindOfSearch={kindOfSearch}/> 
+                    : <GenresOfMyList 
+                        handlerGenre={handlerGenre}
+                        />
+               }
             </div>
         </section>
         <section className='results_container'>
             <h3>{selectedCategory.name}</h3>
             <div className='list_container'>
-                <List
+                {kindOfSearch!=='my-list' ? <List
                     searchedMovie={searchedMovie}
                     selectedCategory={selectedCategory}
                     kindOfSearch={kindOfSearch}
-                    />
+                    />: <MyList
+                    searchedMovie={searchedMovie}
+                    selectedCategory={selectedCategory} />}
             
             </div>
         </section>
@@ -66,4 +75,4 @@ const DiscoverView = ()=>{
     )
 }
 
-export {DiscoverView}
+export default DiscoverView;

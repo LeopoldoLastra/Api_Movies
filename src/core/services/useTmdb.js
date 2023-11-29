@@ -2,9 +2,16 @@ import { useState, useEffect } from 'react';
 
 const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
+
+
+   
+
+
     const [information, setInformation] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
+
+   
 
     const adapter = (data)=>{
         if(!data.results){
@@ -40,6 +47,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
     const URL = 'https://api.themoviedb.org/3';
     let path;
     function selected_path(){
+       
         if(type==='popular'){
             path=`${URL}/movie/popular`
         }else if(type === 'upcoming'){

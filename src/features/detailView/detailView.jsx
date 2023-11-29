@@ -16,17 +16,22 @@ const DetailView = ()=>{
 
   const {handleFavs, isFav} = useContext(MoviesContext)
 
-  const locationHash = ((location.hash.split('/')))
+  const locationHash = ((location.pathname.split('/')))
 
+  
   const [movieId, setMovieId]= useState((locationHash[2]))
   
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
  
+console.log('el detalle es', information)
+
   const selectedMovie = { 
     id:information.id,
     title:information.title,
-    img:information.poster,
-    description:information.overview
+    poster:information.poster,
+    description:information.overview,
+    kindOfSearch:locationHash[1],
+    genres:information.genres
   }
   const isFavMovie = isFav(movieId)
   
@@ -66,7 +71,7 @@ const DetailView = ()=>{
             <section className='carrousel_container'>
               <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
                 <div className='cards_container'>
-                    <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+                    <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.pathname.split('/'))[1]}/>
                     <div className='cards'></div>
                     
                 </div>

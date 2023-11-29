@@ -5,7 +5,7 @@ import { HomeView } from './features/home/homeView';
 import { LoginView } from './features/login/loginView';
 import { DetailView } from './features/detailView/detailView';
 //import { MoviesContext } from './context/MoviesContext';
-import { DiscoverView } from './features/discoverView/discoverView';
+import DiscoverView  from './features/discoverView/discoverView';
 import { useAuth } from "./context/AuthContext";
 import MoviesProvider from './context/MoviesProvider';
 
@@ -35,6 +35,7 @@ const App = () => {
                 <Route path='/tv/:slug' element={<RequireAuth><DetailView /></RequireAuth>} />
                 <Route path='/movie' element={<RequireAuth><DiscoverView /></RequireAuth>} />
                 <Route path='/tv' element={<RequireAuth><DiscoverView /></RequireAuth>} />
+                <Route path='/my-list' element={<RequireAuth><DiscoverView /></RequireAuth>} />
             </Routes>
         </BrowserRouter>
     )

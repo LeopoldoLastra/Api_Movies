@@ -7,14 +7,17 @@ const List = ({searchedMovie, selectedCategoryName, kindOfSearch, selectedCatego
 
 //Filtro por genero
 
-    let pathSelection ='discover'
-    let genreSelection = 'all_genres'
+    let pathSelection 
+    let genreSelection 
     const{id, name} = selectedCategory
-    if(id!=='all genres'){
+    if(id!=='all_genres'){
         pathSelection = 'discover_by_genre'
         genreSelection = id  
+    }else{
+        pathSelection ='discover'
+        genreSelection = 'all_genres'
     }
-    console.log(genreSelection)
+ 
     const {information, error}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
 
 //Filtro por búsqueda

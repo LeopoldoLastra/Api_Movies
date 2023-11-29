@@ -12,6 +12,7 @@ const ItemsMenu = ({orientation}) => {
         <li className={style.link}><Link to={'/'}>Inicio</Link></li>
         <li className={style.link}><Link to={'/movie'}>Peliculas</Link></li>
         <li className={style.link}><Link to={'/tv'}>Series</Link></li>
+        <li className={style.link}><Link to={'/my-list'}>Mi Lista</Link></li>
         <li className={style.link}><Link to={'/'}>Nosotros</Link></li>
         <li className={style.link}><Link to={'/'}>Contacto</Link></li>
     </ul>
