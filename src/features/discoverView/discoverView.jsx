@@ -10,7 +10,7 @@ import Search from '../../core/components/search/Search';
 const DiscoverView = ()=>{
 
    const kindOfSearch = window.location.pathname
-   console.log(kindOfSearch)
+   
 
     //Se utiliza movie de forma genérica (tanto para movies como para series)
     
@@ -39,7 +39,7 @@ const DiscoverView = ()=>{
         <>
         <Header/>
         <section className='intro_container'>
-            <h2>Las Mejores {kindOfSearch==='movie'? 'Peliculas' : 'Series'}</h2>
+            <h2>Las Mejores {kindOfSearch==='/movie'? 'Peliculas' : 'Series'}</h2>
             <div className="search-categoria">
                 <Search 
                     handlerSearchChange={handlerSearchChange}

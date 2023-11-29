@@ -34,11 +34,9 @@ export default function MoviesProvider({children}) {
         }
     },[])
 
-    const [movieId, setMovieId]= useState(872585)
-    const handleClick = (kindOfSearch,id) => {
+    const [movieId, setMovieId]= useState(window.location.pathname.split('/')[1])
+    const handleClick = (id) => {
         setMovieId(id)
-        console.log(movieId)
-        // console.log(kindOfSearch, id)
     }
     // ${location.pathname}/
     return(
