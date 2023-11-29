@@ -2,16 +2,9 @@ import { useState, useEffect } from 'react';
 
 const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
-
-
-   
-
-
     const [information, setInformation] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
-
-   
 
     const adapter = (data)=>{
         if(!data.results){
@@ -20,6 +13,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
                   id: data.id,
                   title: data.title || data.name,
                   poster: data.poster_path,
+                  posterHori: data.backdrop_path,
                   genres: data.genres,
                   overview: data.overview,
                   vote: data.vote_average
@@ -30,14 +24,13 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
                     id: e.id,
                     title: e.title || e.name,
                     poster: e.poster_path,
+                    posterHori: data.backdrop_path,
                     genres: e.genre_ids,
                     overview: e.overview,
                     vote: e.vote_average
-                    
                })))
         }
     }
-
     const options = {
           method: 'GET',
           headers: {
@@ -48,7 +41,6 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
     const URL = 'https://api.themoviedb.org/3';
     let path;
     function selected_path(){
-       
         if(type==='popular'){
             path=`${URL}/movie/popular`
         }else if(type === 'upcoming'){
@@ -73,21 +65,21 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
     selected_path()
 
 
-    const popularMovies = async() =>{
-        setIsLoading(true);
-        setError(null);
-        try{
-            const response = await fetch(path, options);
-            const data = await response.json();
-            const addaptedData = adapter(data)
-            setInformation(addaptedData)
-        }catch(error){
-            setError(error);
-        }finally{
-            setIsLoading(false);
-        }       
-    }
     useEffect(()=>{
+        const popularMovies = async () =>{
+            setIsLoading(true);
+            setError(null);
+            try{
+                const response = await fetch(path, options);
+                const data = await response.json();
+                const addaptedData = adapter(data)
+                setInformation(addaptedData)
+            }catch(error){
+                setError(error);
+            }finally{
+                setIsLoading(false);
+            }       
+        }
         popularMovies();
     },[path])
 

@@ -1,9 +1,6 @@
 import './list.css'
-import React, { useState } from 'react';
 import { useTmdb } from '../../services/useTmdb';
 import { ListSkeleton } from '../loadingSkeleton/listSkeleton/listSkeleton';
-import { MoviesContext } from '../../../context/MoviesContext';
-import { useContext } from 'react';
 import { Card } from '../card/card';
 
 const List = ({searchedMovie, kindOfSearch, selectedCategory})=>{
@@ -31,10 +28,7 @@ const List = ({searchedMovie, kindOfSearch, selectedCategory})=>{
     }else{
         list = information
     }
-    const {setMovieId}=useContext(MoviesContext)
-    // const handleOnClick = (id)=>{
-    //     setMovieId(id)
-    // }
+    
     return(
         <>
             {
@@ -44,7 +38,6 @@ const List = ({searchedMovie, kindOfSearch, selectedCategory})=>{
                             list?.map( movie => (
                                 <Card
                                     key={movie.id}
-                                    // onClick={()=>handleOnClick(movie.id)}
                                     title={movie.title}
                                     id={movie.id}
                                     img={movie.poster}

@@ -24,6 +24,7 @@ const DetailView = ()=>{
     id:information.id,
     title:information.title,
     poster:information.poster,
+    posterHori: information.posterHori,
     description:information.overview,
     kindOfSearch:locationPathName[1],
     genres:information.genres
@@ -33,16 +34,23 @@ const DetailView = ()=>{
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
   }
-
+  console.log(information)
   return(
   <>
       <Header/>
       <main className='body' >
           <div className='detail_main_container'>
-            <img 
-              className='detail_img' 
-              src={`https://image.tmdb.org/t/p/original${information.poster}`} 
-              />
+            <figure className='detail_data_container'>
+              <img 
+                className='detail_img' 
+                src={`https://image.tmdb.org/t/p/original${information.posterHori}`} 
+                />
+                <div className="detail_img_overlay"></div>
+                <figcaption className='detail_info'>
+                  <h1>{information?.title}</h1>
+                  <p>{information?.overview}</p>
+                </figcaption>
+            </figure>
             <div className='container-bar-info'>
               <section className='body_action_bar' >
                 <BiLike className='icon'/>
@@ -55,12 +63,12 @@ const DetailView = ()=>{
                 </span>
                 <IoShareSocialOutline className='icon' />
               </section>
-              <section className='description_container'>
+              {/* <section className='description_container'>
                 <div className='detail_container'>
                   <h1>{information?.title}</h1>
                   <p>{information?.overview}</p>
                 </div>
-              </section>
+              </section> */}
             </div>    
           </div>
           <section className='relacionadas'>
