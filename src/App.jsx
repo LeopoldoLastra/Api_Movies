@@ -1,15 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 import { register } from 'swiper/element/bundle';
-<<<<<<< HEAD
-//import MoviesProvider from './context/MoviesProvider';
-import { HomeView } from './features/home/homeView';
-import { LoginView } from './features/login/loginView';
-import { DetailView } from './features/detailView/detailView';
-//import { MoviesContext } from './context/MoviesContext';
-import DiscoverView  from './features/discoverView/discoverView';
-import { useAuth } from "./context/AuthContext";
-=======
->>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
 import MoviesProvider from './context/MoviesProvider';
 import { lazy } from 'react';
 import { Suspense } from 'react';

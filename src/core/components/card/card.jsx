@@ -13,7 +13,7 @@ const Card = ({title, img, id, kindOfSearch})=>{
     return(
         <>
             <NavLink 
-                to={`/${kindOfSearch}/${kindOfSearch}/${id}`}
+                to={`/${kindOfSearch}/${id}`}
                 >
                 <div
                     className='cards'

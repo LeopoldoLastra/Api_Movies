@@ -11,12 +11,8 @@ import { GenresOfMyList } from '../../core/components/genre/genresOfMyList';
 
 const DiscoverView = ()=>{
 
-<<<<<<< HEAD
-   const kindOfSearch = location.pathname.split('/')[1]
-=======
    const kindOfSearch = window.location.pathname
-   console.log(kindOfSearch)
->>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
+
 
     //Se utiliza movie de forma genérica (tanto para movies como para series)
     
@@ -51,7 +47,7 @@ const DiscoverView = ()=>{
                     handlerSearchChange={handlerSearchChange}
                     searchedMovie={searchedMovie
                     }/> 
-               { kindOfSearch!=='my-list' 
+               { kindOfSearch!=='/my-list' 
                     ? <GenreList
                         handlerGenre={handlerGenre}
                         kindOfSearch={kindOfSearch}/> 
@@ -64,7 +60,7 @@ const DiscoverView = ()=>{
         <section className='results_container'>
             <h3>{selectedCategory.name}</h3>
             <div className='list_container'>
-                {kindOfSearch!=='my-list' ? <List
+                {kindOfSearch!=='/my-list' ? <List
                     searchedMovie={searchedMovie}
                     selectedCategory={selectedCategory}
                     kindOfSearch={kindOfSearch}

@@ -13,23 +13,14 @@ const List = ({searchedMovie, kindOfSearch, selectedCategory})=>{
     let pathSelection 
     let genreSelection 
     const{id, name} = selectedCategory
-<<<<<<< HEAD
-    if(id!=='all_genres'){
-=======
 
     if(id!=='all genres'){
->>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
         pathSelection = 'discover_by_genre'
         genreSelection = id  
     }else{
         pathSelection ='discover'
         genreSelection = 'all_genres'
     }
-<<<<<<< HEAD
- 
-    const {information, error}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
-=======
->>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
 
     const {information, error, isLoading}= useTmdb ({type:pathSelection, genreId:genreSelection, kindOfSearch:kindOfSearch})
     

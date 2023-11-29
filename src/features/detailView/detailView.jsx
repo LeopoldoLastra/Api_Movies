@@ -14,29 +14,18 @@ const DetailView = ()=>{
 
   const {handleFavs, isFav, movieId} = useContext(MoviesContext)
 
-<<<<<<< HEAD
-  const locationHash = ((location.pathname.split('/')))
+  const locationPathName = ((location.pathname.split('/')))
 
   
-  const [movieId, setMovieId]= useState((locationHash[2]))
-  
-  const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
- 
-console.log('el detalle es', information)
-
-=======
-  const locationHash = ((location.hash.split('/')))
-  
-  const {information, error}=useTmdb({movieId,kindOfSearch:(locationHash[1]) })
+  const {information, error}=useTmdb({movieId,kindOfSearch:(locationPathName[1]) })
 
   
->>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
   const selectedMovie = { 
     id:information.id,
     title:information.title,
     poster:information.poster,
     description:information.overview,
-    kindOfSearch:locationHash[1],
+    kindOfSearch:locationPathName[1],
     genres:information.genres
   }
   const isFavMovie = isFav(movieId)
@@ -74,22 +63,11 @@ console.log('el detalle es', information)
               </section>
             </div>    
           </div>
-<<<<<<< HEAD
-            <section className='carrousel_container'>
-              <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2> 
-                <div className='cards_container'>
-                    <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.pathname.split('/'))[1]}/>
-                    <div className='cards'></div>
-                    
-                </div>
-            </section>          
-=======
           <section className='relacionadas'>
-            <h2>{locationHash[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
-            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+            <h2>{locationPathName[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
+            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={locationPathName[1]}/>
               
           </section>          
->>>>>>> 951387c5d262ab54fb91f0d39af7c847bcfb2fa8
       </main>
       <Footer />
   </>
