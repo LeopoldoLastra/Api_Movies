@@ -8,43 +8,15 @@ import HomeView from './features/home/homeView';
 import LoginView from './features/login/loginView';
 import DetailView from './features/detailView/detailView';
 import DiscoverView from './features/discoverView/discoverView';
-// import { useAuth } from "./context/AuthContext";
 import RequireAuth from './features/login/RequireAuth';
+import Proximamente from './features/otherView/Proximamente';
 
 
 register()
 
 const App = () => {
-    // const { currentUser } = useAuth()
 
     return(
-        // <MoviesProvider>
-        //     <HashRouter>
-        //        <Suspense fallback={<Spinner/>}>
-        //             <Routes>
-        //                 <Route path='/login' element={<LoginView/>}/>
-        //                 <Route path='/' element={<HomeView/>}/>
-        //                 <Route path='/movie/:slug' element={<DetailView/>}/>
-        //                 <Route path='/tv/:slug' element={<DetailView/>}/>
-        //                 <Route path='/movie' element={<DiscoverView/>}/>
-        //                 <Route path='/tv' element={<DiscoverView/>}/>
-        //             </Routes>
-        //         </Suspense>
-        //     </HashRouter>
-        // </MoviesProvider>
-
-    // const RequireAuth = ({ children }) => {
-    //     return currentUser ? (
-    //         <>
-    //             <MoviesProvider>
-    //                 {children}
-    //             </MoviesProvider>
-    //         </>
-    //     ) : (
-    //         <Navigate to="/" />
-    //     );
-    // };
-
 
         <BrowserRouter>
             <Routes>
@@ -55,6 +27,9 @@ const App = () => {
                 <Route path='/movie' element={<RequireAuth><DiscoverView /></RequireAuth>} />
                 <Route path='/tv' element={<RequireAuth><DiscoverView /></RequireAuth>} />
                 <Route path='/my-list' element={<RequireAuth><DiscoverView /></RequireAuth>} />
+                <Route path='/nosotros' element={<RequireAuth><Proximamente /></RequireAuth>} />
+                <Route path='/contacto' element={<RequireAuth><Proximamente /></RequireAuth>} />
+
             </Routes>
         </BrowserRouter>
     )
