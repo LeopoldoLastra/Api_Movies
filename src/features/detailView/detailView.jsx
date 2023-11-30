@@ -30,6 +30,14 @@ const DetailView = ()=>{
     genres:information.genres
   }
   const isFavMovie = isFav(movieId)
+
+  const handleLike=()=>{
+    if(likeMovie=="like"){
+      setLikeMovie('')
+    }else{
+      setLikeMovie('like')
+    }
+  }
   
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
