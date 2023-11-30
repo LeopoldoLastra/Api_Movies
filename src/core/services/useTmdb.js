@@ -1,11 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
-<<<<<<< HEAD
-    const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
-=======
 const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
->>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
     const [information, setInformation] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)

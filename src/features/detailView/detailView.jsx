@@ -34,34 +34,11 @@ const DetailView = ()=>{
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
   }
-<<<<<<< HEAD
-
-  const handleLike = ()=>{
-
-    if(likeMovie == 'like'){
-      setLikeMovie( '')
-    }
-    else{
-      setLikeMovie( 'like')
-    }
-   
-  }
-
-=======
->>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
   return(
   <>
       <Header/>
       <main className='body' >
           <div className='detail_main_container'>
-<<<<<<< HEAD
-            <img 
-              className='detail_img' 
-
-             
-              src={information.poster == null ? 'https://images.pexels.com/photos/5662857/pexels-photo-5662857.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1': `https://image.tmdb.org/t/p/original${information.poster}`} 
-              />
-=======
             <figure className='detail_data_container'>
               <picture>
                 <source media="(max-width:600px )" srcSet={`https://image.tmdb.org/t/p/original${information.poster}`} />
@@ -77,7 +54,6 @@ const DetailView = ()=>{
                   <p>{information?.overview}</p>
                 </figcaption>
             </figure>
->>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
             <div className='container-bar-info'>
               <section className='body_action_bar' >
 

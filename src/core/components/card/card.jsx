@@ -10,10 +10,6 @@ const Card = ({title, img, id, kindOfSearch})=>{
         
         const {handleClick}=useContext(MoviesContext)
 
-<<<<<<< HEAD
-        
-=======
->>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
     return(
         <>
             <NavLink 

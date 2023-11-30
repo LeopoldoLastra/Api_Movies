@@ -95,27 +95,6 @@
   border-right: 1px solid var(--grey);
 
 }
-<<<<<<< HEAD
-.detail_img{
-  border-radius: 10px;
-  width: 100%;
-  object-fit:contain;
-}
-
-.description_container{
-  margin: 10px;
-  letter-spacing: 1.2px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  margin: 0px 0px;
-}
-
-.trend_container{
-  width: 100vw;
-}
-=======
->>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
 
 .relacionadas h2:first-child{
   margin: 20px auto;
@@ -148,14 +127,9 @@
   }
   .detail_img{
     justify-content: center;
-<<<<<<< HEAD
-    object-fit:contain;
-    
-=======
     width: 100%;
     max-height: 400px;
     object-fit:cover;
->>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
   }
   .container-bar-info{
     display: inline;
