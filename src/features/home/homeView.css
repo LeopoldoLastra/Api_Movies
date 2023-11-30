@@ -9,7 +9,6 @@
   color: var(--black);
   display: flex;
   flex-direction: column;
-  margin-top: 8px;
   background-color: var(--white);  
   scroll-snap-type: y mandatory;
   padding: 10px;

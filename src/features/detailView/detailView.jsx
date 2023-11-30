@@ -5,7 +5,7 @@ import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-
 import { BiLike } from 'react-icons/bi';
 import './detailView.css'
 import Header from '../../core/components/header/header';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Footer } from '../../core/components/footer/footer';
 
@@ -18,7 +18,6 @@ const DetailView = ()=>{
 
   
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationPathName[1]) })
-
   
   const selectedMovie = { 
     id:information.id,
@@ -34,17 +33,20 @@ const DetailView = ()=>{
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
   }
-  console.log(information)
   return(
   <>
       <Header/>
       <main className='body' >
           <div className='detail_main_container'>
             <figure className='detail_data_container'>
-              <img 
-                className='detail_img' 
-                src={`https://image.tmdb.org/t/p/original${information.posterHori}`} 
-                />
+              <picture>
+                <source media="(max-width:600px )" srcSet={`https://image.tmdb.org/t/p/original${information.poster}`} />
+                <img 
+                  className='detail_img' 
+                  src={`https://image.tmdb.org/t/p/original${information.posterHori}`}
+                  loading="lazy" 
+                  decoding="async"/>
+              </picture>
                 <div className="detail_img_overlay"></div>
                 <figcaption className='detail_info'>
                   <h1>{information?.title}</h1>
@@ -63,12 +65,6 @@ const DetailView = ()=>{
                 </span>
                 <IoShareSocialOutline className='icon' />
               </section>
-              {/* <section className='description_container'>
-                <div className='detail_container'>
-                  <h1>{information?.title}</h1>
-                  <p>{information?.overview}</p>
-                </div>
-              </section> */}
             </div>    
           </div>
           <section className='relacionadas'>

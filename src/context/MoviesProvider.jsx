@@ -34,7 +34,7 @@ export default function MoviesProvider({children}) {
         }
     },[])
 
-    const [movieId, setMovieId]= useState()
+    const [movieId, setMovieId]= useState('')
     const handleClick = (id) => {
         setMovieId(id)
     }

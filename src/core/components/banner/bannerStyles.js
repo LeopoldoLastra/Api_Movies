@@ -18,11 +18,11 @@ export const useBannerStyles = () =>{
     let stylesInfoContainer;
     let stylesImg;
     if(width>761){
-        stylesSwiper={overflow:'hidden', margin:'10px auto', minHeight: 400, borderRadius:'16px', marginTop:'80px'}
+        stylesSwiper={overflow:'hidden', margin:'0 auto', minHeight: 400, borderRadius:'16px', marginTop:'80px'}
         stylesSlide={width: '100%', height:'100%', backgroundColor: '#000', display:'grid', gridTemplateColumns:'30% 1fr', justifyContent: 'flex-end', overflow:'hidden'}
         stylesImg={objectFit:'cover', width:'100%', height:'100%', borderRadius: '0'}
         stylesInfoContainer={color: '#ddd', width:'100%', textAlign: 'center',display:'flex',flexDirection: 'column',justifyContent:'center',padding:'0 8px'}
-        stylesTitle={fontSize:'35px', height:'70%', whiteSpace:'pre-wrap'}
+        stylesTitle={fontSize:'30px', height:'70%', whiteSpace:'pre-wrap'}
     }else if(width<760){
         stylesSwiper={overflow:'hidden', minHeight: 200, marginTop:'65px', padding:'5px', justifyItems:'center', alignItems:'center'}
         
