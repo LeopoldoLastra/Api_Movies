@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
@@ -78,10 +78,18 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
             setIsLoading(false);
         }       
     }
-
+    
     useEffect(()=>{
         popularMovies();
     },[path])
+
+    useCallback(
+      () => {
+        popularMovies()
+      },
+      [path],
+    )
+    
 
     return{
         information,
