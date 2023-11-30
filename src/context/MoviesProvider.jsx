@@ -34,8 +34,10 @@ export default function MoviesProvider({children}) {
         }
     },[])
 
-    const [movieId, setMovieId]= useState((location.hash.split('/'))[2])
-
+    const [movieId, setMovieId]= useState('')
+    const handleClick = (id) => {
+        setMovieId(id)
+    }
     return(
         <MoviesContext.Provider
             value={{
@@ -43,8 +45,8 @@ export default function MoviesProvider({children}) {
                 handleFavs,
                 isFav,
                 movieId,
-                setMovieId
-
+                setMovieId,
+                handleClick
             }}>
             {children}
         </MoviesContext.Provider>

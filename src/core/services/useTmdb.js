@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
 
@@ -13,6 +13,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
                   id: data.id,
                   title: data.title || data.name,
                   poster: data.poster_path,
+                  posterHori: data.backdrop_path,
                   genres: data.genres,
                   overview: data.overview,
                   vote: data.vote_average
@@ -23,14 +24,13 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
                     id: e.id,
                     title: e.title || e.name,
                     poster: e.poster_path,
+                    posterHori: data.backdrop_path,
                     genres: e.genre_ids,
                     overview: e.overview,
                     vote: e.vote_average
-                    
                })))
         }
     }
-
     const options = {
           method: 'GET',
           headers: {
@@ -48,7 +48,6 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
         }else if(type === 'now_playing'){
             path=`${URL}/movie/now_playing`
         }else if(type==='similar'){
-            
             path=`${URL}/${kindOfSearch}/${movieId}/similar`   
         }else if(type==='trending'){
             path=`${URL}/trending/movie/${time}`
@@ -65,8 +64,7 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
     } 
     selected_path()
 
-
-    const popularMovies = async() =>{
+    const popularMovies = async () =>{
         setIsLoading(true);
         setError(null);
         try{
@@ -80,9 +78,18 @@ const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
             setIsLoading(false);
         }       
     }
+    
     useEffect(()=>{
         popularMovies();
     },[path])
+
+    useCallback(
+      () => {
+        popularMovies()
+      },
+      [path],
+    )
+    
 
     return{
         information,

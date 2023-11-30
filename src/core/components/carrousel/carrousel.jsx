@@ -9,7 +9,6 @@ const Carrousel = ({type, movieId, time, kindOfSearch})=>{
 
     let sectionTitle = type.toUpperCase().replace('_', ' ');
 
-
     
    return(
     <>
@@ -23,7 +22,7 @@ const Carrousel = ({type, movieId, time, kindOfSearch})=>{
         {
             isLoading 
                 ? <CardSkeleton/>
-                : information?.map(e=>
+                : information && information?.map(e=>
                         <Card
                             key={e.id}
                             id={e.id}

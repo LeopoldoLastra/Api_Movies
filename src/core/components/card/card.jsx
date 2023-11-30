@@ -6,11 +6,7 @@ import { MoviesContext } from '../../../context/MoviesContext';
 
 const Card = ({title, img, id, kindOfSearch})=>{
         
-        const {setMovieId}=useContext(MoviesContext)
-
-        const handleOnClick = ()=>{
-            setMovieId(id)
-        }
+        const {handleClick}=useContext(MoviesContext)
 
     return(
         <>
@@ -19,7 +15,7 @@ const Card = ({title, img, id, kindOfSearch})=>{
                 >
                 <div
                     className='cards'
-                    onClick={()=>{handleOnClick()}}
+                    onClick={()=>handleClick(id)}
                     >
                         <img src={`https://image.tmdb.org/t/p/original${img}`}/>
                         <div className="card-info">{title}</div>

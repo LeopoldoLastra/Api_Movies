@@ -1,40 +1,63 @@
-import { HashRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 import { register } from 'swiper/element/bundle';
 import MoviesProvider from './context/MoviesProvider';
 import { lazy } from 'react';
 import { Suspense } from 'react';
 import Spinner from './core/components/spinner/spinner';
+import HomeView from './features/home/homeView';
+import LoginView from './features/login/loginView';
+import DetailView from './features/detailView/detailView';
+import DiscoverView from './features/discoverView/discoverView';
+// import { useAuth } from "./context/AuthContext";
+import RequireAuth from './features/login/RequireAuth';
 
 
 register()
 
-const App = ()=>{
-
-
-    const HomeView = lazy(()=>import('./features/home/homeView'))
-    const LoginView = lazy(()=>import('./features/login/loginView'))
-    const DetailView = lazy(()=>import('./features/detailView/detailView'))
-    const DiscoverView = lazy(()=>import('./features/discoverView/discoverView'))
-    
+const App = () => {
+    // const { currentUser } = useAuth()
 
     return(
-        <MoviesProvider>
-            <HashRouter>
-               <Suspense fallback={<Spinner/>}>
+        // <MoviesProvider>
+        //     <HashRouter>
+        //        <Suspense fallback={<Spinner/>}>
+        //             <Routes>
+        //                 <Route path='/login' element={<LoginView/>}/>
+        //                 <Route path='/' element={<HomeView/>}/>
+        //                 <Route path='/movie/:slug' element={<DetailView/>}/>
+        //                 <Route path='/tv/:slug' element={<DetailView/>}/>
+        //                 <Route path='/movie' element={<DiscoverView/>}/>
+        //                 <Route path='/tv' element={<DiscoverView/>}/>
+        //             </Routes>
+        //         </Suspense>
+        //     </HashRouter>
+        // </MoviesProvider>
 
-                    <Routes>
-                        <Route path='/' element={<HomeView/>}/>
-                        <Route path='/login' element={<LoginView/>}/>
-                        <Route path='/movie/:slug' element={<DetailView/>}/>
-                        <Route path='/tv/:slug' element={<DetailView/>}/>
-                        <Route path='/movie' element={<DiscoverView/>}/>
-                        <Route path='/tv' element={<DiscoverView/>}/>
+    // const RequireAuth = ({ children }) => {
+    //     return currentUser ? (
+    //         <>
+    //             <MoviesProvider>
+    //                 {children}
+    //             </MoviesProvider>
+    //         </>
+    //     ) : (
+    //         <Navigate to="/" />
+    //     );
+    // };
 
-                    </Routes>
-                </Suspense>
-            </HashRouter>
-        </MoviesProvider>
+
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<LoginView />} />
+                <Route path='/inicio' element={<RequireAuth><HomeView /></RequireAuth>} />
+                <Route path='/movie/:slug' element={<RequireAuth><DetailView /></RequireAuth>} />
+                <Route path='/tv/:slug' element={<RequireAuth><DetailView /></RequireAuth>} />
+                <Route path='/movie' element={<RequireAuth><DiscoverView /></RequireAuth>} />
+                <Route path='/tv' element={<RequireAuth><DiscoverView /></RequireAuth>} />
+                <Route path='/my-list' element={<RequireAuth><DiscoverView /></RequireAuth>} />
+            </Routes>
+        </BrowserRouter>
     )
 };
 
-export {App}
+export { App }
