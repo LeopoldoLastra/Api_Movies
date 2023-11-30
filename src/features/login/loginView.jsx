@@ -40,7 +40,7 @@ const LoginView = () => {
             <div className="container-login">
                 <div className="form-container sign-in-container">
                     <form className="form-login" onSubmit={submit}>
-                        <h1 className="h1-login-left">Iniciar Sesión</h1>
+                        <h1 className="h1-login">Iniciar Sesión</h1>
                         <div className="email">
                             <input
                                 className="input-login"
@@ -80,16 +80,9 @@ const LoginView = () => {
                         </button>
                     </form>
                 </div>
-                <div className="overlay-container">
-                    <div className="overlay">
-                        <div className="overlay-panel overlay-right">
-                            <h1 className="h1-login">Insertar LOGO/MARCA</h1>
-                            <p className="p-login">Descripcion corta</p>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
-            <Footer />
+        
         </div>
     );
 };

@@ -1,12 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
-
-
-
-   
-
-
+    const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
     const [information, setInformation] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)

@@ -24,7 +24,8 @@
   align-items: center;
   overflow: hidden;
   place-content: center;
-  background-color:rgba(10,80,89,.5);
+  background-color:var(--black);
+
 }
 .body_action_bar .icon{
   min-width: 100%;
@@ -47,7 +48,7 @@
 .detail_img{
   border-radius: 10px;
   width: 100%;
-  object-fit: cover;
+  object-fit:contain;
 }
 
 .description_container{
@@ -82,9 +83,12 @@
   }
   .detail_img{
     justify-content: center;
-    width: 90%;
-    height: 80%;
-    object-fit:cover;
+    object-fit:contain;
     
+  }
+  .container-bar-info{
+    display: inline;
+    height: 100%;
+  
   }
 }

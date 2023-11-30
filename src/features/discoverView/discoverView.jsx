@@ -12,7 +12,7 @@ import { GenresOfMyList } from '../../core/components/genre/genresOfMyList';
 const DiscoverView = ()=>{
 
    const kindOfSearch = window.location.pathname.split('/')[1]
-   console.log('eeeeeeeeeee',kindOfSearch)
+   
 
     //Se utiliza movie de forma genérica (tanto para movies como para series)
     

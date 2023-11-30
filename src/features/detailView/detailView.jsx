@@ -2,10 +2,10 @@
 import { Carrousel } from '../../core/components/carrousel/carrousel';
 import { useTmdb } from '../../core/services/useTmdb';
 import { IoBookmarkOutline, IoBookmarkSharp ,IoShareSocialOutline } from 'react-icons/io5';
-import { BiLike } from 'react-icons/bi';
+import { BiLike, BiSolidLike} from 'react-icons/bi';
 import './detailView.css'
 import Header from '../../core/components/header/header';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Footer } from '../../core/components/footer/footer';
 
@@ -13,6 +13,7 @@ import { Footer } from '../../core/components/footer/footer';
 const DetailView = ()=>{
 
   const {handleFavs, isFav, movieId} = useContext(MoviesContext)
+  const [likeMovie, setLikeMovie] = useState('');
 
   const locationPathName = ((location.pathname.split('/')))
 
@@ -34,6 +35,17 @@ const DetailView = ()=>{
     handleFavs(selectedMovie)
   }
 
+  const handleLike = ()=>{
+
+    if(likeMovie == 'like'){
+      setLikeMovie( '')
+    }
+    else{
+      setLikeMovie( 'like')
+    }
+   
+  }
+
   return(
   <>
       <Header/>
@@ -41,11 +53,26 @@ const DetailView = ()=>{
           <div className='detail_main_container'>
             <img 
               className='detail_img' 
-              src={`https://image.tmdb.org/t/p/original${information.poster}`} 
+
+             
+              src={information.poster == null ? 'https://images.pexels.com/photos/5662857/pexels-photo-5662857.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1': `https://image.tmdb.org/t/p/original${information.poster}`} 
               />
             <div className='container-bar-info'>
               <section className='body_action_bar' >
-                <BiLike className='icon'/>
+
+               
+
+                <span 
+                  onClick={() => handleLike()} 
+                  className='icon'>
+                  {
+                    likeMovie =='like' ?  <BiSolidLike className='icon'/> : <BiLike className='icon'/> 
+                  }
+                </span>
+
+
+
+
                 <span 
                   onClick={() => saveMovie()} 
                   className='icon'>
