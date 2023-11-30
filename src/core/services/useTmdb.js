@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
+<<<<<<< HEAD
     const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
+=======
+const useTmdb= ({type, movieId, time, genreId,kindOfSearch})=>{
+
+>>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
     const [information, setInformation] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
-
-   
 
     const adapter = (data)=>{
         if(!data.results){
@@ -14,6 +17,7 @@ import { useState, useEffect } from 'react';
                   id: data.id,
                   title: data.title || data.name,
                   poster: data.poster_path,
+                  posterHori: data.backdrop_path,
                   genres: data.genres,
                   overview: data.overview,
                   vote: data.vote_average
@@ -24,14 +28,13 @@ import { useState, useEffect } from 'react';
                     id: e.id,
                     title: e.title || e.name,
                     poster: e.poster_path,
+                    posterHori: data.backdrop_path,
                     genres: e.genre_ids,
                     overview: e.overview,
                     vote: e.vote_average
-                    
                })))
         }
     }
-
     const options = {
           method: 'GET',
           headers: {
@@ -42,7 +45,6 @@ import { useState, useEffect } from 'react';
     const URL = 'https://api.themoviedb.org/3';
     let path;
     function selected_path(){
-       
         if(type==='popular'){
             path=`${URL}/movie/popular`
         }else if(type === 'upcoming'){
@@ -66,8 +68,7 @@ import { useState, useEffect } from 'react';
     } 
     selected_path()
 
-
-    const popularMovies = async() =>{
+    const popularMovies = async () =>{
         setIsLoading(true);
         setError(null);
         try{
@@ -81,9 +82,18 @@ import { useState, useEffect } from 'react';
             setIsLoading(false);
         }       
     }
+    
     useEffect(()=>{
         popularMovies();
     },[path])
+
+    useCallback(
+      () => {
+        popularMovies()
+      },
+      [path],
+    )
+    
 
     return{
         information,

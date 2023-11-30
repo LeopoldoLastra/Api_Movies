@@ -12,10 +12,12 @@ import { GenresOfMyList } from '../../core/components/genre/genresOfMyList';
 const DiscoverView = ()=>{
 
    const kindOfSearch = window.location.pathname.split('/')[1]
+<<<<<<< HEAD
    
+=======
+>>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
 
     //Se utiliza movie de forma genérica (tanto para movies como para series)
-    
     const [searchedMovie, setSearchedMovie] = useState('')
     const [selectedCategory, setSelectedCategory] = useState({
         id:'all genres',
@@ -41,7 +43,7 @@ const DiscoverView = ()=>{
         <>
         <Header/>
         <section className='intro_container'>
-            <h2>Las Mejores {kindOfSearch==='movie'? 'Peliculas' : 'Series'}</h2>
+            <h2>Las Mejores {kindOfSearch==='/movie'? 'Peliculas' : 'Series'}</h2>
             <div className="search-categoria">
                 <Search 
                     handlerSearchChange={handlerSearchChange}
@@ -60,14 +62,16 @@ const DiscoverView = ()=>{
         <section className='results_container'>
             <h3>{selectedCategory.name}</h3>
             <div className='list_container'>
-                {kindOfSearch!=='my-list' ? <List
-                    searchedMovie={searchedMovie}
-                    selectedCategory={selectedCategory}
-                    kindOfSearch={kindOfSearch}
-                    />: <MyList
-                    searchedMovie={searchedMovie}
-                    selectedCategory={selectedCategory} />}
-            
+                {
+                    kindOfSearch!=='my-list' 
+                        ? <List
+                            searchedMovie={searchedMovie}
+                            selectedCategory={selectedCategory}
+                            kindOfSearch={kindOfSearch}
+                            />
+                        : <MyList
+                            searchedMovie={searchedMovie}
+                            selectedCategory={selectedCategory} />}
             </div>
         </section>
         <Footer />

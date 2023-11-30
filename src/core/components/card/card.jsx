@@ -10,7 +10,10 @@ const Card = ({title, img, id, kindOfSearch})=>{
         
         const {handleClick}=useContext(MoviesContext)
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
     return(
         <>
             <NavLink 
@@ -18,7 +21,7 @@ const Card = ({title, img, id, kindOfSearch})=>{
                 >
                 <div
                     className='cards'
-                    onClick={()=>handleClick(kindOfSearch, id)}
+                    onClick={()=>handleClick(id)}
                     >
                         <img src={img== null? 'https://images.pexels.com/photos/5662857/pexels-photo-5662857.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'  :`https://image.tmdb.org/t/p/original${img}`}/>
                         <div className="card-info">{title}</div>

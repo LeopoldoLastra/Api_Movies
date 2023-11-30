@@ -34,13 +34,10 @@ export default function MoviesProvider({children}) {
         }
     },[])
 
-    const [movieId, setMovieId]= useState(872585)
-    const handleClick = (kindOfSearch,id) => {
+    const [movieId, setMovieId]= useState('')
+    const handleClick = (id) => {
         setMovieId(id)
-
-    
     }
-  
     return(
         <MoviesContext.Provider
             value={{

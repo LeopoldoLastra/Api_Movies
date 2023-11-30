@@ -19,12 +19,12 @@ const DetailView = ()=>{
 
   
   const {information, error}=useTmdb({movieId,kindOfSearch:(locationPathName[1]) })
-
   
   const selectedMovie = { 
     id:information.id,
     title:information.title,
     poster:information.poster,
+    posterHori: information.posterHori,
     description:information.overview,
     kindOfSearch:locationPathName[1],
     genres:information.genres
@@ -34,6 +34,7 @@ const DetailView = ()=>{
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
   }
+<<<<<<< HEAD
 
   const handleLike = ()=>{
 
@@ -46,17 +47,37 @@ const DetailView = ()=>{
    
   }
 
+=======
+>>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
   return(
   <>
       <Header/>
       <main className='body' >
           <div className='detail_main_container'>
+<<<<<<< HEAD
             <img 
               className='detail_img' 
 
              
               src={information.poster == null ? 'https://images.pexels.com/photos/5662857/pexels-photo-5662857.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1': `https://image.tmdb.org/t/p/original${information.poster}`} 
               />
+=======
+            <figure className='detail_data_container'>
+              <picture>
+                <source media="(max-width:600px )" srcSet={`https://image.tmdb.org/t/p/original${information.poster}`} />
+                <img 
+                  className='detail_img' 
+                  src={`https://image.tmdb.org/t/p/original${information.posterHori}`}
+                  loading="lazy" 
+                  decoding="async"/>
+              </picture>
+                <div className="detail_img_overlay"></div>
+                <figcaption className='detail_info'>
+                  <h1>{information?.title}</h1>
+                  <p>{information?.overview}</p>
+                </figcaption>
+            </figure>
+>>>>>>> 835af6a4ba24a8cfc1ad66a741d56da33bb2bb4c
             <div className='container-bar-info'>
               <section className='body_action_bar' >
 
@@ -81,12 +102,6 @@ const DetailView = ()=>{
                   }
                 </span>
                 <IoShareSocialOutline className='icon' />
-              </section>
-              <section className='description_container'>
-                <div className='detail_container'>
-                  <h1>{information?.title}</h1>
-                  <p>{information?.overview}</p>
-                </div>
               </section>
             </div>    
           </div>
