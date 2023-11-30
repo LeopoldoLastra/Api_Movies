@@ -51,7 +51,7 @@ const LoginView = () => {
                                 autoComplete="current-email"
                             />
                         </div>
-                        <div className="password" style={{ display: "flex", marginLeft: "32px" }}>
+                        <div className="password">
                             <input
                                 className="input-login"
                                 onChange={(e) => {
