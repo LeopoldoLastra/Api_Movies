@@ -54,6 +54,7 @@ const App = () => {
                 <Route path='/tv/:slug' element={<RequireAuth><DetailView /></RequireAuth>} />
                 <Route path='/movie' element={<RequireAuth><DiscoverView /></RequireAuth>} />
                 <Route path='/tv' element={<RequireAuth><DiscoverView /></RequireAuth>} />
+                <Route path='/my-list' element={<RequireAuth><DiscoverView /></RequireAuth>} />
             </Routes>
         </BrowserRouter>
     )

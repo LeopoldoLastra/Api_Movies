@@ -2,6 +2,7 @@ import { Card } from '../card/card';
 import { useTmdb } from '../../services/useTmdb';
 import style from './carrusel.module.css'
 import { CardSkeleton } from '../loadingSkeleton/cardSkeleton/cardSkeleton';
+import { useMemo } from 'react';
 
 const Carrousel = ({type, movieId, time, kindOfSearch})=>{
 
@@ -9,7 +10,7 @@ const Carrousel = ({type, movieId, time, kindOfSearch})=>{
 
     let sectionTitle = type.toUpperCase().replace('_', ' ');
 
-
+    // const info = useMemo(()=>{information},[movieId])
     
    return(
     <>
@@ -23,7 +24,7 @@ const Carrousel = ({type, movieId, time, kindOfSearch})=>{
         {
             isLoading 
                 ? <CardSkeleton/>
-                : information?.map(e=>
+                : information && information?.map(e=>
                         <Card
                             key={e.id}
                             id={e.id}

@@ -14,33 +14,45 @@ const DetailView = ()=>{
 
   const {handleFavs, isFav, movieId} = useContext(MoviesContext)
 
-  const locationHash = (window.location.pathname)
-  console.log(locationHash)
-  console.log(window.location.hash.split('/'))
-  const {information, error}=useTmdb({movieId,kindOfSearch:locationHash })
+  const locationPathName = ((location.pathname.split('/')))
 
+  
+  const {information, error}=useTmdb({movieId,kindOfSearch:(locationPathName[1]) })
   
   const selectedMovie = { 
     id:information.id,
     title:information.title,
-    img:information.poster,
-    description:information.overview
+    poster:information.poster,
+    posterHori: information.posterHori,
+    description:information.overview,
+    kindOfSearch:locationPathName[1],
+    genres:information.genres
   }
   const isFavMovie = isFav(movieId)
   
   const saveMovie = ()=>{
     handleFavs(selectedMovie)
   }
-
   return(
   <>
       <Header/>
       <main className='body' >
           <div className='detail_main_container'>
-            <img 
-              className='detail_img' 
-              src={`https://image.tmdb.org/t/p/original${information.poster}`} 
-              />
+            <figure className='detail_data_container'>
+              <picture>
+                <source media="(max-width:600px )" srcSet={`https://image.tmdb.org/t/p/original${information.poster}`} />
+                <img 
+                  className='detail_img' 
+                  src={`https://image.tmdb.org/t/p/original${information.posterHori}`}
+                  loading="lazy" 
+                  decoding="async"/>
+              </picture>
+                <div className="detail_img_overlay"></div>
+                <figcaption className='detail_info'>
+                  <h1>{information?.title}</h1>
+                  <p>{information?.overview}</p>
+                </figcaption>
+            </figure>
             <div className='container-bar-info'>
               <section className='body_action_bar' >
                 <BiLike className='icon'/>
@@ -53,17 +65,11 @@ const DetailView = ()=>{
                 </span>
                 <IoShareSocialOutline className='icon' />
               </section>
-              <section className='description_container'>
-                <div className='detail_container'>
-                  <h1>{information?.title}</h1>
-                  <p>{information?.overview}</p>
-                </div>
-              </section>
             </div>    
           </div>
           <section className='relacionadas'>
-            <h2>{locationHash=='/movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
-            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={(location.hash.split('/'))[1]}/>
+            <h2>{locationPathName[1]==='movie'? 'Peliculas' : 'Series'} Relacionadas</h2>  
+            <Carrousel type={'similar'} movieId={movieId} kindOfSearch={locationPathName[1]}/>
               
           </section>          
       </main>

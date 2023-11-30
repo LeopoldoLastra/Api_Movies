@@ -34,11 +34,10 @@ export default function MoviesProvider({children}) {
         }
     },[])
 
-    const [movieId, setMovieId]= useState(window.location.pathname.split('/')[1])
+    const [movieId, setMovieId]= useState('')
     const handleClick = (id) => {
         setMovieId(id)
     }
-    // ${location.pathname}/
     return(
         <MoviesContext.Provider
             value={{
